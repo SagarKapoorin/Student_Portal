@@ -10,7 +10,7 @@ const Quize=new Schema({
         required:true,
         default:0,
     },
-    Max_score:{
+    Highscore:{
         type:Number,
         required:true,
         default:0,
