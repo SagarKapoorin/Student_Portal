@@ -5,7 +5,7 @@ const Quize=require("../models/Quize.js");
 const User=require("../models/User.js");
 main()
     .then(()=>{
-        console.log("Successful")
+        console.log("Successfull")
     })
     .catch((err)=>{
         console.log("Failure  Reason: ",err);
