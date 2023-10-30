@@ -8,6 +8,7 @@ const Quize=new Schema({
     Correct:{
         type:Number,
         required:true,
+        default:0,
     },
     Max_score:{
         type:Number,
