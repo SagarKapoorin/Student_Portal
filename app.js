@@ -4,14 +4,9 @@ const methodoverride=require('method-override'); //for overrinding post and get
 app.use(methodoverride("_method"));
 const mongoose=require('mongoose');
 const ejsmate=require("ejs-mate");
-//const expresserror=require("./expresserror");
-//const router=require("./routes/listing.js");
-//const reviewrouter=require("./routes/review.js");
 const flash=require("connect-flash");
 const passport=require("passport");
 const LocalStrategy=require("passport-local");
-//const User=require("./models/User.js");
-//const userrouter=require("./routes/user.js");
 app.engine('ejs', ejsmate);
 main()
     .then(()=>{

@@ -21,12 +21,17 @@ const Userschema = new Schema({
     Quize:{
         type:mongoose.Schema.Types.ObjectId,
         ref:'Quize',
-    }
+    },
+    Review:[{
+        type:mongoose.Schema.Types.ObjectId,
+        ref:'Review',
+    }]
 });
 Userschema.post("findOneAndDelete",async(user)=>{
     if(user){
         await Notes.deleteMany({_id:{$in: user.Notes}});
-        await Quize.deleteOne({_id:{$in: user.Quize}})
+        await Quize.deleteOne({_id:{$in: user.Quize}});
+        await Review.deleteMany({_id:{$in: user.Review}})
     }
 })
 Userschema.plugin(passportLocalMongoose);
