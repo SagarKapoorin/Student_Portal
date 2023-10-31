@@ -28,5 +28,5 @@ app.listen("8080",(req,res)=>{     //started listening connections
 app.set("views",path.join(__dirname,"/views"));
 app.use(express.static(path.join(__dirname,"public"))); 
 app.get("/",(req,res)=>{
-    res.send("Hello");
+    res.render("Layout/boilerplate.ejs");
 })

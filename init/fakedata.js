@@ -74,6 +74,6 @@ const fakeuser = async () => {
     });
     console.log(user);
   };
-  fakeuser();
+ // fakeuser();
 
   
