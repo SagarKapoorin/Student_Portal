@@ -50,7 +50,7 @@ input {
 }
 
 body {
-  background-color: var(--body-color);
+  background-color:#f8f9fb ;
   overflow: hidden;
 }
 
@@ -81,12 +81,17 @@ ul {
     width:100%;
     display: flex;
     justify-content: space-between;
-    padding:0.6rem;
+    padding:0.01rem;
     border:1px solid black;
+}
+.header_a>p{
+  display: flex;
+  align-items: center;
 }
 .header_b{
     display: flex;
     justify-content: flex-end;
+    align-items: center ;
 }
 .header_b>form>button{
     margin-left: 0.5rem;
@@ -103,4 +108,8 @@ ul {
     float:right;
     border:1px solid black;
     height:100%;
+}
+.header_a>p{
+  font-weight: 500;
+  font-size: var(--h3-font-size);
 }
