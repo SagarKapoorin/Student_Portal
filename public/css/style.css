@@ -79,17 +79,25 @@ ul {
   }
 /* Css for body class */
 .body{
-    width:80%;
+    width:90%;
     float:right;
-    border:1px solid black;
     height:100%;
 }
 /* Css for sidebar  */
 .sidebar{
     float: left;
-    width:20%;
-    border:1px solid black;
-    padding:0.6rem;
+    width:4%;
+    padding:1rem 0.65rem;
+    margin-left: 1rem;
+    margin-top: 1.4rem;
+    background-color: #6F6AF8 ;
+    border-radius: 13px;
+    height:440px;
+}
+.sidebar_menu i{
+  font-size: 1.3rem;
+  color:#f8f9fb ;
+  line-height: 3rem;
 }
 /* setting up header */
 .header{
@@ -97,7 +105,6 @@ ul {
   display: flex;
   justify-content: space-between;
   padding:0.01rem;
-  border:1px solid black;
 }
 .header_a>p{
 display: flex;
@@ -111,9 +118,24 @@ align-items: center;
 .header_b>form>button{
   margin-left: 0.5rem;
   margin-right:0.5rem;
+  background-color:#f8f9fb ;
+  color: #3b3878;
+  font-weight:500;
+}
+#plus-button i{
+  color: #3b3878;
+  font-weight:600;
+}
+#plus-button{
+  margin-right: 0.5rem;
+}
+.drop-down div{
+  color: #3b3878;
+  font-weight: 500;
 }
 .header_a>p{
-  font-weight: 500;
+  color: #3b3878;
+  font-weight:900;
   font-size: var(--h3-font-size);
 }
 /* CSS for the dropdown menus */
