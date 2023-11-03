@@ -4,7 +4,10 @@ var addCalculator = () => {
     const container = document.getElementById('main-container');
     const htmlStr = `
         <div class="container">
-            <button onclick="closeWindow(this)">×</button>
+        <button onclick="closeWindow(this)" class="X">×</button>
+        <div class="drag-bar" onmousedown="dragStart(this)">
+             <p>Calculator</p>
+        </div>
             <iframe src="/calculator" class="calculator"></iframe>
         </div>
     `;
