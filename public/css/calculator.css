@@ -18,7 +18,12 @@ body, html{
     display:grid;
     grid-gap: 0px;
     grid-template-columns: 12.5% 12.5% 12.5% 12.5% 12.5% 12.5% 12.5% 12.5%;
-    grid-template-rows: 25% 15% 15% 15% 15% 15%
+    grid-template-rows: 25% 15% 15% 15% 15% 15%;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
 }
 
 #calc-container div {
@@ -58,6 +63,11 @@ body, html{
     justify-content: center;
     align-items: center;
     transition: all 0.1s;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
 }
 .button:active{
     transform: scale(0.9);

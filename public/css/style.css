@@ -93,6 +93,11 @@ ul {
     background-color: #6F6AF8 ;
     border-radius: 13px;
     height:440px;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
 }
 .sidebar_menu {
   position: relative;
@@ -159,6 +164,11 @@ ul {
   display: flex;
   justify-content: space-between;
   padding:0.01rem;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 }
 .header_a>p{
 display: flex;
@@ -227,10 +237,37 @@ align-items: center;
   overflow: hidden;
   padding: 5px;
   margin: 10px;
-  height: 100%;
+  width:320px;
+  height: 340px;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 }
 .calculator {
   width: 310px;
   height: 250px;
   background-color: black;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  border:1px solid black;
+}
+.drag-bar {
+  width: 310px;
+  height: 20px;
+  cursor: grab;
+  color:white;
+  text-align: center;
+  background-color: black;
+}
+.drag-bar:active {
+  cursor: grabbing;
+}
+.X{
+  background-color: transparent;
+  color:black
 }
