@@ -88,16 +88,6 @@ body, html{
 .Color2:active{
      background-color: rgb(230,120,0);
      }
-
-.Color3{
-     background-color: rgb(130,130,130)
-     }
-.Color3:hover{ 
-    background-color: rgb(120,120,120)
- }
-.Color3:active{
-     background-color: rgb(105,105,105)
-     }
 p{
     margin: 0px;
     line-height: 100%;
