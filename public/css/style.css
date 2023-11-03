@@ -217,3 +217,20 @@ align-items: center;
 .drop-down div:hover {
   background-color: #f0f0f0;
 }
+/* css for main-body */
+/* parts */
+.container {
+  position: absolute;
+  top: 0px;
+  left: 5px;
+  border-radius: 8px 8px 8px 8px;
+  overflow: hidden;
+  padding: 5px;
+  margin: 10px;
+  height: 100%;
+}
+.calculator {
+  width: 310px;
+  height: 250px;
+  background-color: black;
+}
