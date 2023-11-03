@@ -19,23 +19,10 @@
 <body>
         <%- include("../includes/header.ejs"); %>
         <%- include("../includes/sidebar.ejs"); %>
-    <div class="body">
+    <div class="body" id="main-container">
     <h1><i class="ri-arrow-left-up-line"></i>Hellow</h1>
     </div>
     <script src="js/dropmenu.js"></script>
-    <script src="js/Addwidgets.js"></script>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script>
-$(document).ready(function() {
-    $('.sidebar_menu').on('click', function() {
-        // Remove the 'active' class from all icons
-        $('.sidebar_menu i').removeClass('active');
-
-        // Add the 'active' class to the clicked icon
-        $(this).find('i').addClass('active');
-    });
-});
-</script>
-
+    <script src="js/add.js"></script>
 </body>
 </html>

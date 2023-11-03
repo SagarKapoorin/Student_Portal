@@ -30,3 +30,6 @@ app.use(express.static(path.join(__dirname,"public")));
 app.get("/",(req,res)=>{
     res.render("Layout/boilerplate.ejs");
 })
+app.get("/calculator",(req,res)=>{
+    res.render("Components/Calculator/calculator.ejs");
+})
