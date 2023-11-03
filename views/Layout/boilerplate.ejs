@@ -24,5 +24,18 @@
     </div>
     <script src="js/dropmenu.js"></script>
     <script src="js/Addwidgets.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+$(document).ready(function() {
+    $('.sidebar_menu').on('click', function() {
+        // Remove the 'active' class from all icons
+        $('.sidebar_menu i').removeClass('active');
+
+        // Add the 'active' class to the clicked icon
+        $(this).find('i').addClass('active');
+    });
+});
+</script>
+
 </body>
 </html>
