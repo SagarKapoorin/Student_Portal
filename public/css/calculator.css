@@ -19,11 +19,6 @@ body, html{
     grid-gap: 0px;
     grid-template-columns: 12.5% 12.5% 12.5% 12.5% 12.5% 12.5% 12.5% 12.5%;
     grid-template-rows: 25% 15% 15% 15% 15% 15%;
-    -webkit-user-select: none;
-    -khtml-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
 }
 
 #calc-container div {
@@ -48,7 +43,7 @@ body, html{
 }
 
 
-#operation-symbol{
+#operation{
     margin-left: 1vh;
     font-size: 5vh;
     color: grey;
@@ -96,11 +91,20 @@ body, html{
      background-color: rgb(245,130,0) 
     }
 .Color2:active{
-     background-color: rgb(230,120,0);
+     background-color: #FFA500;
      }
 p{
     margin: 0px;
     line-height: 100%;
     color: white;
     font-weight: bold;
+}
+.Color0{
+    background-color:  #333333;
+}
+.Color0:hover{
+    background-color:  #6C757D;
+}
+.Color0:active{
+    background-color:  #6C757D;
 }
