@@ -5,20 +5,16 @@ var nextnumber = true;
 var operation = "";
 
 function digit(input) {
+    document.getElementById("clear-button").innerHTML = "C"
+    //replace zero if zero is first clicked
     if (nextnumber) {
-        //if input is 0 again take input
-        if (input1 === '0') {
-            input1 = input;
-        } else {
-            input1 += input;
-        }
+        input1 += input;
         updatedisplay(input1);
     } else {
         input2 += input;
         updatedisplay(input2);
     }
 }
-
 
 function decimal() {
     if (nextnumber) {
@@ -34,7 +30,7 @@ function decimal() {
     }
 }
 
-function cClear() {
+function clear() {
     if (input2 != "") {
         input2 = ""
         updatedisplay("")
@@ -208,7 +204,7 @@ function showAns(answer) {
     operation = ""
 }
 
-function neg() {
+function negate() {
     if (nextnumber) {
         input1 *= -1;
         updatedisplay(input1);
@@ -327,6 +323,8 @@ function sqrt() {
         updatedisplay(input2);
     }
 }
+
+
 function fac() {
     if (nextnumber) {
         input1 = factorial(input1, 0.5);
@@ -375,7 +373,7 @@ function rnd() {
 function rand() {
     //random number generate
     if (nextnumber) {
-        input1 = Math.random()*100;
+        input1 = Math.random();
         input1 = Math.round(input1 * 1000000000) / 1000000000;
         updatedisplay(input1);
     } else {
@@ -397,7 +395,7 @@ function e() {
     }
 }
 
-function Pi() {
+function PI() {
     if (nextnumber) {
         input1 = 3.14159;
         updatedisplay(input1);
@@ -426,5 +424,5 @@ function updatedisplay(input) {
 
 function displayOperation(input) {
 
-    document.getElementById("operation").innerHTML = input;
+    document.getElementById("operation-symbol").innerHTML = input;
 }
