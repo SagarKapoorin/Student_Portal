@@ -1,11 +1,15 @@
-const text = document.getElementById('content');
-function bold(){
-   text.style.cssText = "font-weight: bold;"
+const text = document.getElementsByClassName('content');
+function bold() {
+  text[0].classList.remove("normal");
+  text[0].classList.add("bold");
 };
 
 function italic(){
-  text.style.cssText = "font-style: italic;" 
+  text[0].classList.remove("normal");
+  text[0].classList.add("italic");
 }
 function regular(){
-    text.style.cssText = "font-style: normal; font-weight: normal;"
+  text[0].classList.remove("italic");
+  text[0].classList.remove("bold");
+  text[0].classList.add("normal");
 }
