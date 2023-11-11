@@ -33,3 +33,6 @@ app.get("/",(req,res)=>{
 app.get("/calculator",(req,res)=>{
     res.render("Components/Calculator/calculator.ejs");
 })
+app.get("/Notes",(req,res)=>{
+    res.render("Components/Notes/Notes.ejs");
+})
