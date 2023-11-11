@@ -7,22 +7,21 @@
     box-sizing: border-box;
     font-family: 'Lato', sans-serif;
 }
+/* --------------Main------------------ */
+.Main{
+    flex-wrap: wrap;
+}
 /* not want box to show on typing */
 [contenteditable="true"]:focus {
     outline: none;
   }
 body, html{
     margin:0px;
-    width:100%;
-    height:100%;
+    position: relative;
+    overflow: none;
 }
 button{
     margin-left: 0.6rem;
-}
-/* -----------------------heading-------------------- */
-.Heading{
-font-weight: 700;
-text-align: center;
 }
 /* -------------------------title and description------------ */
 .title,.description{
@@ -35,9 +34,15 @@ text-align: center;
     padding-top: 0.2rem;
     padding-left: 1rem;
     border: none;
+    word-wrap: break-word;
+    font-size: 0.8rem;
+}
+.subject{
+    margin-right: 0.1rem;
 }
 .description p{
-    font-size: 0.9rem;
+    font-size: 0.8rem;
+    word-wrap: break-word;
 }
 /* ------------------------------------Bold-italic-regular-------------------- */
 .bold{
@@ -54,4 +59,8 @@ text-align: center;
 hr{
     width: 90%;
     margin:0 auto;
+}
+/* ----button---------- */
+button{
+    font-size: 0.8rem;
 }

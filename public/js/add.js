@@ -19,12 +19,12 @@
 // };
 // Better version-----+no problem of reseting data----->>>>>>>>>>>
 // Creates and adds a new calculator window to the main container
-var addCalculator = () => {
+const addCalculator = () => {
     //getting container(main-body)->passing htmlStr in it 
     const container = document.getElementById('main-container');
-    const divElement = document.createElement('div');  // Create a new div element
-    divElement.classList.add('container');  // Add 'container' class to the div
-    divElement.innerHTML = `
+    const divelement = document.createElement('div');  // Create a new div element
+    divelement.classList.add('container');  // Add 'container' class to the div
+    divelement.innerHTML = `
         <button onclick="closeWindow(this)" class="X">×</button>
         <div class="drag-bar" onmousedown="dragStart(this)">
              <p>Calculator</p>
@@ -32,10 +32,25 @@ var addCalculator = () => {
         <iframe src="/calculator" class="calculator"></iframe>
     `;
 
-    container.appendChild(divElement);  // Append the new div to the container
+    container.appendChild(divelement);  // Append the new div to the container
 };
+//Notes
+const addNotes = () => {
+    //getting container(main-body)->passing htmlStr in it 
+    const container = document.getElementById('main-container');
+    const divelement = document.createElement('div');  // Create a new div element
+    divelement.classList.add('Notes_container');  // Add 'container' class to the div
+    divelement.innerHTML = `
+        <button onclick="closeWindow(this)" class="X">×</button>
+        <div class="drag-bar-notes" onmousedown="dragStart(this)">
+             <p>Notes</p>
+        </div>
+        <iframe src="/Notes" class="Notes"></iframe>
+    `;
 
+    container.appendChild(divelement);  // Append the new div to the container
+};
 //removing parent element of element
-var closeWindow = (element) => {
+const closeWindow = (element) => {
     element.parentNode.remove();
 };

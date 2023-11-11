@@ -1,10 +1,6 @@
-/*=============== GOOGLE FONTS ===============*/
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600&family=Poppins:wght@400;500&display=swap");
-
-/*=============== VARIABLES CSS ===============*/
+/* root */
 :root {
-  /*========== Font and typography ==========*/
-  /*.5rem = 8px | 1rem = 16px ...*/
   --body-font: "Poppins", sans-serif;
   --second-font: "Montserrat", sans-serif;
   --biggest-font-size: 2.75rem;
@@ -15,14 +11,11 @@
   --small-font-size: .813rem;
   --smaller-font-size: .75rem;
 
-  /*========== Font weight ==========*/
   --font-regular: 400;
   --font-medium: 500;
   --font-semi-bold: 600;
 }
 
-
-/*========== Responsive typography ==========*/
 @media screen and (min-width: 1152px) {
   :root {
     --biggest-font-size: 5.5rem;
@@ -34,8 +27,7 @@
     --smaller-font-size: .813rem;
   }
 }
-
-/*=============== BASE ===============*/
+/* base */
 * {
   box-sizing: border-box;
   padding: 0;
@@ -271,4 +263,37 @@ align-items: center;
 .X{
   background-color: transparent;
   color:black
+}
+.Notes{
+  width: 300px;
+  height: 300px;
+ 
+}
+.Notes_container {
+  position: absolute;
+  top: 0px;
+  left: 5px;
+  border-radius: 8px 8px 8px 8px;
+  overflow: hidden;
+  padding: 5px;
+  margin: 10px;
+  width:300px;
+  height: 340px;
+  /* prevent from selecting */
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+.drag-bar-notes {
+  width: 310px;
+  height: 20px;
+  cursor: grab;
+  color:white;
+  text-align: center;
+  background-color: blueviolet;
+}
+.drag-bar-notes:active {
+  cursor: grabbing;
 }
