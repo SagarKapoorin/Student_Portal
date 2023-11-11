@@ -35,28 +35,14 @@ function decimal() {
 }
 
 function cClear() {
-    if (input2 != "") {
-        input2 = ""
-        updatedisplay("")
-    } else if (operation != "") {
-        operation = ""
-        displayOperation("")
-        nextnumber = true
-        updatedisplay(input1)
-        document.getElementById("clear-button").innerHTML = "AC"
-    } else {
-        document.getElementById("clear-button").innerHTML = "C"
-        clearInp()
-    }
-}
-
-function clearInp() {
     input1 = "";
     input2 = "";
     operation = "";
     nextnumber = true;
     displayOperation("");
     updatedisplay("");
+    // reset all
+
 }
 
 function add() {
