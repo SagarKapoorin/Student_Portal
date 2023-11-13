@@ -21,7 +21,12 @@ function countword_description(text, event){
     if (event.keyCode != 8) {
       // Disable further typing
       //by not allowing there default behaavious..
+      // adding errmsg with timeout of 5 seconds
       errmsg[0].style.display="block";
+      setTimeout(() => {
+        errmsg[0].style.display="none";
+      }, 5000);
+     
       event.preventDefault();
       // console.log('Editing disabled. Height exceeds 140 pixels.');
     }else{
@@ -40,7 +45,11 @@ function countword_subject(text, event){
     if (event.keyCode != 8) {
       // Disable further typing
       //by not allowing there default behaavious..
-      errmsg[0].style.display="block";
+       errmsg[0].style.display="block";
+      setTimeout(() => {
+        errmsg[0].style.display="none";
+      }, 5000);
+     
       event.preventDefault();
       // console.log('Editing disabled. Height exceeds 140 pixels.');
     }else{
