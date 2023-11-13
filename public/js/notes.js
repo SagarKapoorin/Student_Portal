@@ -1,4 +1,5 @@
 const text = document.getElementsByClassName('content');
+const errmsg=document.getElementsByClassName('error');
 function bold() {
   text[0].classList.remove("normal");
   text[0].classList.add("bold");
@@ -15,31 +16,40 @@ function regular(){
 }
 function countword_description(text, event){
   limit = text.innerText;
-  if (text.offsetHeight > 140) {
+  if (text.offsetHeight > 139) {
     // Check if the last key pressed was a backspace (key code 8)
     if (event.keyCode != 8) {
       // Disable further typing
       //by not allowing there default behaavious..
+      errmsg[0].style.display="block";
       event.preventDefault();
       // console.log('Editing disabled. Height exceeds 140 pixels.');
+    }else{
+      errmsg[0].style.display="none";
     }
   } else {
     // Enable editing when the height is below the limit
     text.contentEditable = true;
+    errmsg[0].style.display="none";
   }
 }
+
 function countword_subject(text, event){
   if (text.offsetHeight > 39) {
     // Check if the last key pressed was a backspace (key code 8)
     if (event.keyCode != 8) {
       // Disable further typing
       //by not allowing there default behaavious..
+      errmsg[0].style.display="block";
       event.preventDefault();
       // console.log('Editing disabled. Height exceeds 140 pixels.');
+    }else{
+      errmsg[0].style.display="none";
     }
   } else {
     // Enable editing when the height is below the limit
     text.contentEditable = true;
+    errmsg[0].style.display="none";
     // console.log(text.offsetHeight);
   }
 }
