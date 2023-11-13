@@ -237,6 +237,7 @@ align-items: center;
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
+  
 }
 .calculator {
   width: 310px;
@@ -248,6 +249,7 @@ align-items: center;
   -ms-user-select: none;
   user-select: none;
   border:1px solid black;
+
 }
 .drag-bar {
   width: 310px;
@@ -266,8 +268,9 @@ align-items: center;
 }
 .Notes{
   width: 300px;
-  height: 300px;
- 
+  height: 350px;
+ border: 1px solid transparent;
+ background-color:  #ffffff ;
 }
 .Notes_container {
   position: absolute;
@@ -275,24 +278,23 @@ align-items: center;
   left: 5px;
   border-radius: 8px 8px 8px 8px;
   overflow: hidden;
-  padding: 5px;
-  margin: 10px;
   width:300px;
-  height: 340px;
+  height: 390px;
   /* prevent from selecting */
   -webkit-user-select: none;
   -khtml-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
+  box-shadow:  20px 20px 60px #bebebe,
+             -20px -20px 60px #ffffff;
+    background-color: #ffffff;
 }
 .drag-bar-notes {
-  width: 310px;
-  height: 20px;
   cursor: grab;
-  color:white;
+  color:#292267;
+  font-weight: 700;
   text-align: center;
-  background-color: blueviolet;
 }
 .drag-bar-notes:active {
   cursor: grabbing;
