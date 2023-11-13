@@ -42,7 +42,7 @@ button{
 }
 .description p{
     font-size: 0.8rem;
-    word-wrap: break-word;
+    overflow: hidden;
 }
 /* ------------------------------------Bold-italic-regular-------------------- */
 .bold{
@@ -61,6 +61,62 @@ hr{
     margin:0 auto;
 }
 /* ----button---------- */
-button{
-    font-size: 0.8rem;
+/* motive is to make a before that passes behind button text */
+.Bold{
+    position: fixed;
+    top:230px;
+    left:-10px;
 }
+.italic_text{
+    position: fixed;
+    top:230px;
+    left:90px;
+}
+.regular{
+    position: fixed;
+    top:230px;
+    left:190px;
+}
+button {
+    font-size: 0.8rem;
+    padding: 8px 15px;
+    border: unset;
+    border-radius: 15px;
+    color: #212121;
+    z-index: 1;
+    /* needed so that before will go through back not front */
+    background: #e8e8e8;
+    font-weight: 1000;
+    box-shadow: 4px 8px 19px -3px rgba(0,0,0,0.27);
+    transition: all 250ms;
+    overflow: hidden;
+   }
+   /* creating before that passes behind button */
+   button::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    /* keeping width 0 until active */
+    width: 0;
+    border-radius: 15px;
+    background-color: #292267;
+    z-index: -1;
+    -webkit-box-shadow: 4px 8px 19px -3px rgba(0,0,0,0.27);
+    box-shadow: 4px 8px 19px -3px rgba(0,0,0,0.27);
+    transition: all 250ms
+   }
+   
+   button:hover {
+    color: #e8e8e8;
+   }
+   
+   button:hover::before {
+    width: 100%;
+   }
+   .Save{
+    position: fixed;
+    top:290px;
+    left:90px;
+   }

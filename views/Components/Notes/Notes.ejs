@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel= "stylesheet" href="css/notes.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/3.5.0/remixicon.css" integrity="sha512-HXXR0l2yMwHDrDyxJbrMD9eLvPe3z3qL3PPeozNTsiHJEENxx8DH2CxmV05iwG0dwoz5n4gQZQyYLUNt1Wdgfg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <script src="js/notes.js"></script>
     <title>Notes</title>
 </head>
@@ -11,16 +12,20 @@
     <div class="Main">
         <div class="title">
         <h3 class="subject">Subject-:</h3>
-        <p contenteditable="true">Your Subject here...</p>
+        <p contenteditable="true" onkeydown="countword_subject(this, event)">Your Subject here...</p>
         </div>
         <hr>
         <div class="description">
-        <p contenteditable="true" class="content">Your Content here....</p>
+        <p contenteditable="true" class="content" onkeydown="countword_description(this, event)">Your Content here....</p>
         <!-- //contenteditable is use to write -->
         </div>
-        <button onclick="bold()">Bold</button>
-        <button onclick="italic()">Italic</button>
-        <button onclick="regular()">Regular</button>
+        <div>
+        <button onclick="bold()" class="Bold"><i class="ri-bold"></i> &nbsp; Bold</button>
+        <button onclick="italic()" class="italic_text"><i class="ri-italic"></i> &nbsp; Italic</button>
+        <button onclick="regular()" class="regular">Regular</button>
     </div>
+    </div>
+    <button class="Save"><i class="ri-save-line"> &nbsp;</i>Save</button>
+    
 </body>
 </html>
