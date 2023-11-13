@@ -34,7 +34,7 @@ button{
     padding-top: 0.2rem;
     padding-left: 1rem;
     border: none;
-    word-wrap: break-word;
+    overflow: hidden;
     font-size: 0.8rem;
 }
 .subject{
@@ -43,6 +43,16 @@ button{
 .description p{
     font-size: 0.8rem;
     overflow: hidden;
+}
+.error{
+    font-size: 0.8rem;
+    display: block;
+    position: absolute;
+    top:210px;
+    left:145px;
+    font-weight: 900;
+    color:red;
+    display:none;
 }
 /* ------------------------------------Bold-italic-regular-------------------- */
 .bold{
@@ -64,17 +74,17 @@ hr{
 /* motive is to make a before that passes behind button text */
 .Bold{
     position: fixed;
-    top:230px;
+    top:250px;
     left:-10px;
 }
 .italic_text{
     position: fixed;
-    top:230px;
+    top:250px;
     left:90px;
 }
 .regular{
     position: fixed;
-    top:230px;
+    top:250px;
     left:190px;
 }
 button {
