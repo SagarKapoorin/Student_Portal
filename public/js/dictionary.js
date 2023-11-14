@@ -26,7 +26,6 @@ const search = async() => {
                 }
             })
         }catch(err){
-            console.log(err+"THis is my errorrr");
         }
     } else {
         //reseting if empty
