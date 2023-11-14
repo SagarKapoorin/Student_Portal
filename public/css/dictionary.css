@@ -1,0 +1,42 @@
+html, body {
+    margin: 0;
+    font-family: Roboto, sans-serif;
+    color: black;
+}
+
+#main-container {
+    padding: 0px 10px;
+}
+
+h1 {
+    margin: 0px;
+}
+::placeholder {
+    color: rgba(255, 255, 255, 0.4);
+}
+#search {
+    width: calc(100% - 10px);
+    font-size: 25px;
+    height: 1.2em;
+    border: none;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    color: white;
+    outline: none;
+    padding: 5px;
+    background-color: #FF6347;
+}
+::-webkit-scrollbar {
+    width: 10px;
+ }
+::-webkit-scrollbar-track {
+    background-color: #F5F5F5;
+    border-radius: 10px;
+  }
+::-webkit-scrollbar-thumb {
+    background: #FFA07A;
+    border-radius: 10px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+  
+  }
