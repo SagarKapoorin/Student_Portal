@@ -1,9 +1,10 @@
-const search = () => {
+const search = async() => {
     input = document.getElementById('search').value;
     // removing unwanted space
     input = input.trim()  
     if (input != '') {
-        fetch(`https://api.dictionaryapi.dev/api/v2/entries/en/${input}`)
+        try{
+        await fetch(`https://api.dictionaryapi.dev/api/v2/entries/en/${input}`)
             .then(res => res.json())
             .then(data => {
                 // console.log(data[0]);
@@ -24,6 +25,9 @@ const search = () => {
                     }
                 }
             })
+        }catch(err){
+            console.log(err+"THis is my errorrr");
+        }
     } else {
         //reseting if empty
         document.getElementById('word').innerHTML = "--"

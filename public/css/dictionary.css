@@ -30,11 +30,13 @@ h1 {
     width: 10px;
  }
 ::-webkit-scrollbar-track {
-    background-color: #F5F5F5;
-    border-radius: 10px;
+    border-radius: 50px;
+background: linear-gradient(145deg, #f8f6f6, #f0f0f0);
+box-shadow:  20px 20px 60px #bebebe,
+             -20px -20px 60px #ffffff;
   }
 ::-webkit-scrollbar-thumb {
-    background: #FFA07A;
+    background: #c2c2c2;
     border-radius: 10px;
   }
   ::-webkit-scrollbar-thumb:hover {
