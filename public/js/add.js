@@ -54,3 +54,19 @@ const addNotes = () => {
 const closeWindow = (element) => {
     element.parentNode.remove();
 };
+//dictinary
+const adddict = () => {
+    //getting container(main-body)->passing htmlStr in it 
+    const container = document.getElementById('main-container');
+    const divelement = document.createElement('div');  // Create a new div element
+    divelement.classList.add('Notes_container');  // Add 'container' class to the div
+    divelement.innerHTML = `
+        <button onclick="closeWindow(this)" class="X">×</button>
+        <div class="drag-bar-dict" onmousedown="dragStart(this)">
+             <p>Dictionary</p>
+        </div>
+        <iframe src="/dict" class="Notes"></iframe>
+    `;
+
+    container.appendChild(divelement);  // Append the new div to the container
+};

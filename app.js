@@ -36,3 +36,6 @@ app.get("/calculator",(req,res)=>{
 app.get("/Notes",(req,res)=>{
     res.render("Components/Notes/Notes.ejs");
 })
+app.get("/dict",(req,res)=>{
+    res.render("Components/Dictionary/dictionary.ejs");
+})

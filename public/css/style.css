@@ -286,8 +286,8 @@ align-items: center;
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
-  box-shadow:  20px 20px 60px #bebebe,
-             -20px -20px 60px #ffffff;
+  box-shadow:  20px 20px 6px #bebebe,
+             -2px -2px 6px #ffffff;
     background-color: #ffffff;
 }
 .drag-bar-notes {
@@ -297,5 +297,14 @@ align-items: center;
   text-align: center;
 }
 .drag-bar-notes:active {
+  cursor: grabbing;
+}
+.drag-bar-dict {
+  cursor: grab;
+  color:#FF6347;
+  font-weight: 700;
+  text-align: center;
+}
+.drag-bar-dict:active {
   cursor: grabbing;
 }
