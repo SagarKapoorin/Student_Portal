@@ -1,0 +1,53 @@
+body,html{
+    overflow: hidden;
+    width: 330px;
+    height: 500px;
+    font-size: 13px;
+}
+
+.main{
+    display: flex;
+    background-color: #395ba1;
+    font-family: 'Lato', sans-serif;
+    color:white;
+
+    justify-content: start;
+    border-radius: 30px;
+    width: 100%;
+}
+.description{
+    margin:5px 20px;
+    width:90px;
+    white-space: nowrap;
+}
+.temp{
+    margin:5px 0px;
+    width: 100px;
+    white-space: nowrap;
+}
+#image{
+    margin-top:10px;
+    height: 80px;
+    width:120px;
+}
+#celsius{
+    margin-top: 13px;
+    width:120px;
+    margin-right:6px;
+}
+#weather{
+    margin-left:30px;
+}
+#Humidity{
+    margin-top:6px;
+    margin-bottom: 2px;
+}
+
+#city,#max_min,#min{
+    margin-top:2px;
+    margin-bottom: 2px;
+}
+#wind{
+    margin-top: 2px;
+    margin-bottom: 8px;
+}

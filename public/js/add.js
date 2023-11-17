@@ -70,3 +70,18 @@ const adddict = () => {
 
     container.appendChild(divelement);  // Append the new div to the container
 };
+const addweather = () => {
+    //getting container(main-body)->passing htmlStr in it 
+    const container = document.getElementById('main-container');
+    const divelement = document.createElement('div');  // Create a new div element
+    divelement.classList.add('Weather_container');  // Add 'container' class to the div
+    divelement.innerHTML = `
+        <button onclick="closeWindow(this)" class="Y">×</button>
+        <div class="drag-bar-weather" onmousedown="dragStart(this)">
+             <p>Weather</p>
+        </div>
+        <iframe src="/weather" class="Weather"></iframe>
+    `;
+
+    container.appendChild(divelement);  // Append the new div to the container
+};
