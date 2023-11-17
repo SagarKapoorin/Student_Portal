@@ -346,3 +346,26 @@ align-items: center;
   color:black;
   margin-left:10px;
 }
+.Clock_container{
+  height: 900px;
+  width: 900px;
+  position: absolute;
+  top: 0px;
+  left: 5px;
+  border-radius: 8px 8px 8px 8px;
+  overflow: hidden;
+  /* prevent from selecting */
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  box-shadow:  20px 20px 6px #bebebe,
+             -2px -2px 6px #ffffff;
+    background-color: #395ba1;
+    border-radius: 30px;
+}
+.Clock{
+  width:900px;
+  height: 900px;
+}

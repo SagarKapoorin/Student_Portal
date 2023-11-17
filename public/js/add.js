@@ -85,3 +85,18 @@ const addweather = () => {
 
     container.appendChild(divelement);  // Append the new div to the container
 };
+const addTimer = () => {
+    //getting container(main-body)->passing htmlStr in it 
+    const container = document.getElementById('main-container');
+    const divelement = document.createElement('div');  // Create a new div element
+    divelement.classList.add('Clock_container');  // Add 'container' class to the div
+    divelement.innerHTML = `
+        <button onclick="closeWindow(this)" class="X">×</button>
+        <div class="drag-bar-Clock" onmousedown="dragStart(this)">
+             <p>Weather</p>
+        </div>
+        <iframe src="/Clock" class="Clock"></iframe>
+    `;
+
+    container.appendChild(divelement);  // Append the new div to the container
+};

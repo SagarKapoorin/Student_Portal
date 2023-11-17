@@ -42,3 +42,6 @@ app.get("/dict",(req,res)=>{
 app.get("/weather",(req,res)=>{
     res.render("Components/Weather/weather.ejs");
 })
+app.get("/Clock",(req,res)=>{
+    res.render("Components/Clock/Clock.ejs");
+})
