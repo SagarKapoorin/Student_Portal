@@ -39,3 +39,6 @@ app.get("/Notes",(req,res)=>{
 app.get("/dict",(req,res)=>{
     res.render("Components/Dictionary/dictionary.ejs");
 })
+app.get("/weather",(req,res)=>{
+    res.render("Components/Weather/weather.ejs");
+})
