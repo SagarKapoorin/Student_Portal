@@ -25,7 +25,7 @@ function startWatch() {
         }, 1);
         paused = false;
         running = true;
-        document.getElementById("start-pause-swc").style.paddingRight = "0px";
+        // document.getElementById("start-pause-swc").style.paddingRight = "1rem";
         document.getElementById("start-pause-swc").innerHTML = "Pause";
     } else {
         pauseWatch();
@@ -37,7 +37,7 @@ function pauseWatch() {
     running = false;
     paused = true;
     savedTime = difference;
-    document.getElementById("start-pause-swc").style.width = "40vmin";
+    // document.getElementById("start-pause-swc").style.width = "92px";
     document.getElementById("start-pause-swc").innerHTML = "Resume";
 }
 
@@ -48,7 +48,6 @@ function resetWatch() {
     paused = false;
     running = false;
     document.getElementById("show-time").innerHTML = "00:00:00"
-    document.getElementById("start-pause-swc").style.paddingRight = "0px";
     document.getElementById("start-pause-swc").innerHTML = "Start"
 }
 

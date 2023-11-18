@@ -13,7 +13,7 @@
 //     `;
 //     container.innerHTML += htmlStr;
 // };
-// //removing parentelement of element
+//removing parentelement of element
 // var closeWindow = (element) => {
 //     element.parentNode.remove();
 // };
@@ -91,12 +91,15 @@ const addTimer = () => {
     const divelement = document.createElement('div');  // Create a new div element
     divelement.classList.add('Clock_container');  // Add 'container' class to the div
     divelement.innerHTML = `
-        <button onclick="closeWindow(this)" class="X">×</button>
-        <div class="drag-bar-Clock" onmousedown="dragStart(this)">
-             <p>Weather</p>
+        <div onmousedown="dragStart(this)">
+        <button onclick="closeWindow2(this)" class="X">×</button>
         </div>
         <iframe src="/Clock" class="Clock"></iframe>
     `;
 
     container.appendChild(divelement);  // Append the new div to the container
+};
+const closeWindow2 = (element) => {
+    //find closest div with clock container and remove
+    element.closest('.Clock_container').remove();
 };
