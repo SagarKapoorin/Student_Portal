@@ -12,7 +12,7 @@ function timer() {
     let timeLeft = endTime - currentTime;
     if (timeLeft <= 0) {
         var alarm_sound = new Audio();
-        alarm_sound.src = "wakeup.m4a";
+        alarm_sound.src = "src/clock.mp3";
         alarm_sound.play();
         hour.value = "";
         minute.value = "";
