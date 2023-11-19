@@ -29,10 +29,11 @@ body{
     z-index: 5;
     pointer-events: auto;
     transform: translate(-50%, -50%) scale(1);
+    width: 27.7rem;
 }
 
 .start_btn button{
-    font-size: 25px;
+    font-size: 1rem;
     font-weight: 500;
     color: #FF4081;
     padding: 15px 30px;
@@ -54,14 +55,14 @@ body{
 }
 
 .info_box .info-title{
-    height: 60px;
+    height: 3rem;
     width: 100%;
     border-bottom: 1px solid lightgrey;
     display: flex;
     align-items: center;
     padding: 0 30px;
     border-radius: 5px 5px 0 0;
-    font-size: 20px;
+    font-size: 15px;
     font-weight: 600;
 }
 
@@ -71,7 +72,7 @@ body{
 
 .info_box .info-list .info{
     margin: 5px 0;
-    font-size: 17px;
+    font-size: 15px;
 }
 
 .info_box .info-list .info span{
@@ -79,7 +80,7 @@ body{
     color: #FF4081;
 }
 .info_box .buttons{
-    height: 60px;
+    height: 3rem;
     display: flex;
     align-items: center;
     justify-content: flex-end;
@@ -114,7 +115,7 @@ body{
 .quiz_box .header{
     position: relative;
     z-index: 2;
-    height: 70px;
+    height: 3.35rem;
     padding: 0 30px;
     background: #fff;
     border-radius: 5px 5px 0 0;
@@ -125,7 +126,7 @@ body{
 }
 
 .quiz_box .header .title{
-    font-size: 20px;
+    font-size: 1rem;
     font-weight: 600;
 }
 
@@ -144,7 +145,7 @@ body{
 
 .quiz_box .header .timer .time_left_txt{
     font-weight: 400;
-    font-size: 17px;
+    font-size: 0.8rem;
     -webkit-user-select: none;
   -khtml-user-select: none;
   -moz-user-select: none;
@@ -180,7 +181,7 @@ body{
 }
 
 .section .que_text{
-    font-size: 25px;
+    font-size: 0.9rem;
     font-weight: 600;
 }
 
@@ -253,7 +254,7 @@ body{
 }
 
 footer{
-    height: 60px;
+    height: 3rem;
     padding: 0 30px;
     display: flex;
     align-items: center;
