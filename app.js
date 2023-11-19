@@ -45,3 +45,6 @@ app.get("/weather",(req,res)=>{
 app.get("/Clock",(req,res)=>{
     res.render("Components/Clock/Clock.ejs");
 })
+app.get("/Quiz",(req,res)=>{
+    res.render("Quiz/Quiz.ejs");
+})

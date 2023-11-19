@@ -359,10 +359,16 @@ align-items: center;
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
-    background-color: transparent;
+  background-color: transparent;
 }
 .Clock{
   width:250px;
   height: 300px;
   border: 2px solid transparent;
+}
+.drag-bar-clock{
+  cursor: grab;
+}
+.drag-bar-clock:active {
+  cursor: grabbing;
 }
