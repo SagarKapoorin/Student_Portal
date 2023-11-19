@@ -91,7 +91,7 @@ const addTimer = () => {
     const divelement = document.createElement('div');  // Create a new div element
     divelement.classList.add('Clock_container');  // Add 'container' class to the div
     divelement.innerHTML = `
-        <div onmousedown="dragStart(this)">
+        <div onmousedown="dragStart(this)" class="drag-bar-clock">
         <button onclick="closeWindow2(this)" class="X">×</button>
         </div>
         <iframe src="/Clock" class="Clock"></iframe>
