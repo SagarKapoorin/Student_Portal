@@ -34,7 +34,7 @@ body{
 
 .start_btn button{
     font-size: 1rem;
-    font-weight: 500;
+    font-weight: 600;
     color: #FF4081;
     padding: 15px 30px;
     outline: none;
@@ -42,8 +42,48 @@ body{
     border-radius: 5px;
     background: #fff;
     cursor: pointer;
+    transition: all ease 0.3s;
 }
-
+.start_btn button:hover{
+   background-color: #FF4081;
+   color:white;
+}
+.image_first{
+    display: flex;
+}
+.quiz_a{
+    height:10rem;
+    width:10rem;
+    position: absolute;
+    top:170px;
+    left:90px;
+    opacity: 0.8;
+    z-index:-99;
+}
+.quiz_image{
+    height:30rem;
+    width:30rem;
+    position: absolute;
+    top:21px;
+    left:341px;
+    opacity: 0.5;
+}
+.quiz_images{
+    height:10rem;
+    width:10rem;
+    position: absolute;
+    top:70px;
+    left:1000px;
+    opacity:0.8;
+}
+.quiz_images_A{
+    height:10rem;
+    width:10rem;
+    position: absolute;
+    top:240px;
+    left:1000px;
+    opacity:0.8;
+}
 .info_box{
     width: 540px;
     background: #fff;
@@ -296,7 +336,7 @@ footer button{
 }
 
 footer button:hover{
-    background: #0263ca;
+    background: #FF005C;
 }
 
 footer button.show{
@@ -368,7 +408,7 @@ footer button.show{
 }
 
 .buttons button.restart:hover{
-    background: #0263ca;
+    background: #FF005C;
 }
 
 .buttons button.quit{
