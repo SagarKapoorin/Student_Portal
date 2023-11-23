@@ -64,3 +64,7 @@ app.post("/save-Notes",async(req,res)=>{
     const savedNote = await NoteInstance.save();
     //  console.log('Notes created successfully:', savedNote);
 })
+app.get("/Contact",(req,res)=>{
+    res.render("Contact-Us/Contact.ejs");
+}
+)
