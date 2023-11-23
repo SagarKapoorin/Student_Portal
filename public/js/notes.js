@@ -62,3 +62,27 @@ function countword_subject(text, event){
     // console.log(text.offsetHeight);
   }
 }
+// submit button passing to backend mongodb
+const content=document.getElementsByClassName("content");
+const Subject=document.getElementsByClassName("Subject");
+const Save=document.getElementsByClassName("Save");
+const saveNotes=()=>{
+      // Make a POST request with the JSON object in the body
+      // making saved 
+      Save[0].innerHTML=`<i class="ri-check-double-line"></i> &nbsp;</i>Saved`
+    const SavedNotes_data={
+      Subject:Subject[0].innerHTML,
+      content:content[0].innerHTML,
+    }
+          fetch('/save-Notes', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(SavedNotes_data),
+            // when sending the data to ensure it is properly formatted as JSON
+        })
+        setTimeout(()=>{
+          Save[0].innerHTML=`<i class="ri-save-line"> &nbsp;</i>Save`;
+        },2000)
+}

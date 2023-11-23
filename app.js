@@ -4,7 +4,8 @@ const methodoverride=require('method-override'); //for overrinding post and get
 app.use(methodoverride("_method"));
 const mongoose=require('mongoose');
 const ejsmate=require("ejs-mate");
-const Quiz_model=require("./models/Quize.js")
+const Quiz_model=require("./models/Quize.js");
+const Note_model=require("./models/Notes.js");
 const flash=require("connect-flash");
 const passport=require("passport");
 const LocalStrategy=require("passport-local");
@@ -50,8 +51,16 @@ app.get("/Clock",(req,res)=>{
 app.get("/Quiz",(req,res)=>{
     res.render("Quiz/Quiz.ejs");
 })
+app.get("/Note",(req,res)=>{
+    res.render("Notes/Notes.ejs");
+})
 app.post("/save-quiz",async(req,res)=>{
   const quizInstance=new Quiz_model({Total_question:req.body.Total_question,Correct:req.body.Correct})
     const savedQuiz = await quizInstance.save();
     // console.log('Quiz created successfully:', savedQuiz);
+})
+app.post("/save-Notes",async(req,res)=>{
+    const NoteInstance=new Note_model({Subject:req.body.Subject ,content:req.body.content});
+    const savedNote = await NoteInstance.save();
+    //  console.log('Note created successfully:', savedNote);
 })
