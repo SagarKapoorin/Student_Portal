@@ -136,7 +136,7 @@ function optionSelected(answer){
         answer.classList.add("correct"); //adding green color to correct selected option
         answer.insertAdjacentHTML("beforeend", tickIconTag); //adding tick icon to correct selected option
         // console.log("Correct Answer");
-        console.log("Your correct answers = " + userScore);
+        // console.log("Your correct answers = " + userScore);
     }else{
         answer.classList.add("incorrect"); //adding red color to correct selected option
         answer.insertAdjacentHTML("beforeend", crossIconTag); //adding cross icon to correct selected option
@@ -160,6 +160,8 @@ function showResult(){
     quiz_box.classList.remove("activeQuiz"); //hide quiz box
     result_box.classList.add("activeResult"); //show result box
     const scoreText = result_box.querySelector(".score_text");
+    // console.log(userScore+" "+que_count);
+
     if (userScore > 3){ // if user scored more than 3
         //creating a new span tag and passing the user score number and total question number
         let scoreTag = '<span>and congrats! 🎉, You got <p>'+ userScore +'</p> out of <p>'+ questions.length +'</p></span>';
@@ -173,6 +175,22 @@ function showResult(){
         let scoreTag = '<span>and sorry 😐, You got only <p>'+ userScore +'</p> out of <p>'+ questions.length +'</p></span>';
         scoreText.innerHTML = scoreTag;
     }
+    // to save data from here i am going to use fecth api inbuilt
+    const quizData = {
+        Total_question: que_count + 1,
+        Correct: userScore,
+      };
+      
+      // Make a POST request with the JSON object in the body
+      fetch('/save-quiz', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(quizData),
+        // when sending the data to ensure it is properly formatted as JSON
+    })
+    
 }
 // countdown timer 
 function startTimer(time){
