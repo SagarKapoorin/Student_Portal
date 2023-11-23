@@ -1,0 +1,28 @@
+.main{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+
+}
+.Socail-icon{
+    display: flex;
+    justify-content: space-between;
+}
+.left{
+    width: 45%;
+}
+.right{
+    width: 45%;
+}
+.social{
+    width:42px;
+    height: 42px;
+    border-radius: 50%;
+    background-color: brown;
+    padding:0.5rem;
+}
+.linkedin i{
+    display: block;
+    width: 30px;
+    height: 30px;
+}
