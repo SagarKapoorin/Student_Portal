@@ -62,5 +62,5 @@ app.post("/save-quiz",async(req,res)=>{
 app.post("/save-Notes",async(req,res)=>{
     const NoteInstance=new Note_model({Subject:req.body.Subject ,content:req.body.content});
     const savedNote = await NoteInstance.save();
-    //  console.log('Note created successfully:', savedNote);
+    //  console.log('Notes created successfully:', savedNote);
 })
