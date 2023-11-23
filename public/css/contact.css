@@ -26,3 +26,45 @@
     width: 30px;
     height: 30px;
 }
+h1 span{
+    color:red;
+}
+form{
+    line-height: 50px;
+}
+::placeholder{
+    padding-left: 12px;
+}
+input{
+    background-color:#f1f1f1;
+    width: 29ch;
+    height:3.5ch;
+    border-radius: 13px;
+    padding-left: 7px;
+    font-size: 0.3rem;
+}
+#Find-us{
+    background-color:#f1f1f1;
+    width: 29ch;
+    height:3.5ch;
+    border-radius: 13px;
+    border: none;
+    margin-bottom: 18px;
+    padding-left: 7px;
+}
+textarea:focus-within,#Find-us:focus,input:focus-within{
+    outline: none;
+    margin:0.2rem;
+}
+textarea{
+    width:32ch;
+    height:10ch;
+    background-color: #f1f1f1;
+    border-radius: 13px;
+    border: none;
+    resize: none;
+    padding-left: 7px;
+}
+textarea::placeholder{
+    color:gray;
+}
