@@ -91,6 +91,9 @@ ul {
     -ms-user-select: none;
     user-select: none;
 }
+form{
+  line-height: 30px;
+}
 .sidebar_menu {
   position: relative;
   text-decoration: none;
@@ -165,6 +168,9 @@ ul {
 .header_a>p{
 display: flex;
 align-items: center;
+}
+.header-item{
+  line-height: 30px;
 }
 .header_b{
   display: flex;
