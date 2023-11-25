@@ -6,6 +6,7 @@ const mongoose=require('mongoose');
 const ejsmate=require("ejs-mate");
 const Quiz_model=require("./models/Quize.js");
 const Note_model=require("./models/Notes.js");
+const Contact_model=require("./models/Contact.js");
 const flash=require("connect-flash");
 const passport=require("passport");
 const LocalStrategy=require("passport-local");
@@ -66,5 +67,12 @@ app.post("/save-Notes",async(req,res)=>{
 })
 app.get("/Contact",(req,res)=>{
     res.render("Contact-Us/Contact.ejs");
-}
-)
+})
+app.post("/Contact",async(req,res)=>{
+    const ContactInstance=new Contact_model({Name:req.body.Name ,Email:req.body.Email,Message:req.body.Message,FindUs:req.body.FindUs});
+    const savedContact = await ContactInstance.save();
+      console.log('COntact created successfully:', savedContact);
+    setTimeout(()=>{
+        res.redirect("/Contact");
+    },3000); 
+})
