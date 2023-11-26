@@ -8,10 +8,6 @@ const Contact=new Schema({
     Email:{
         type: String,
         required: true,
-        unique: true,
-        trim: true,
-        lowercase: true,
-        match: /^\S+@\S+\.\S+$/,
     },
     Message:{
         type:String,

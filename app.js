@@ -71,7 +71,7 @@ app.get("/Contact",(req,res)=>{
 app.post("/Contact",async(req,res)=>{
     const ContactInstance=new Contact_model({Name:req.body.Name ,Email:req.body.Email,Message:req.body.Message,FindUs:req.body.FindUs});
     const savedContact = await ContactInstance.save();
-      console.log('COntact created successfully:', savedContact);
+    //   console.log('COntact created successfully:', savedContact);
     setTimeout(()=>{
         res.redirect("/Contact");
     },3000); 
