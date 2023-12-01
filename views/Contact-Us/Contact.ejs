@@ -14,10 +14,10 @@
         </div>
         <div class="right">
         <h1>Get In <span class="Touch">Touch</span> :-</h1>
-        <form method="post" action="/Contact" class="Form">
-            <input type="text" name="Name" id="Username" placeholder="Name">
-            <input type="email" name="Email" id="email" placeholder="Email">
-            <select id="Find-us" name="FindUs">
+        <form method="post" action="/Contact" class="Form" onsubmit="showSweetAlert()">
+            <input type="text" name="Name" id="Username" placeholder="Name" required>
+            <input type="email" name="Email" id="email" placeholder="Email" required>
+            <select id="Find-us" name="FindUs" required>
                 <option value="" disabled selected hidden>How Do You Find Us?</option>
                 <option value="Newspaper">Newspaper</option>
                 <option value="Instagram">Instagram</option>
@@ -27,8 +27,8 @@
                 <option value="Friends">Friends</option>
                 <option value="University/School">University/School</option>
             </select>
-            <textarea name="Message" id="Message" placeholder="Message"></textarea>
-            <button class="btn" onclick="showSweetAlert()">Submit</button>
+            <textarea name="Message" id="Message" placeholder="Message" required></textarea>
+            <button class="btn">Submit</button>
         </form>
         <div class="Contact-info">
             <a href="mailto:sagarbadal70@gmail.com" class="red"><i class="ri-mail-line Gmail" ></i> Gmail</a>
