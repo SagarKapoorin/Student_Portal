@@ -105,5 +105,5 @@ app.get("*",(req,res,next)=>{
 app.use((err, req, res, next) => {
 console.log("error");
     const status = err.status || 500; // Default to 500 if status is undefined
-    res.status(status).redirect("/Contact");
+    res.status(status).send(`Status: ${status}      Message: ${err.message}  Name:${err.name} `);
 });
