@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
-const Contact=new Schema({
-    Name:{
+const Games=new Schema({
+    N:{
         type:String,
         required:true,
     },
@@ -22,4 +22,4 @@ const Contact=new Schema({
         default: Date.now(),
     },
 })
-module.exports = mongoose.model('Contact', Contact);
+module.exports = mongoose.model('Games', Games);

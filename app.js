@@ -7,6 +7,8 @@ const ejsmate=require("ejs-mate");
 const Quiz_model=require("./models/Quize.js");
 const Note_model=require("./models/Notes.js");
 const Contact_model=require("./models/Contact.js");
+const expresserror=require("./expresserror.js")
+const User_model=require("./models/User.js")
 const flash=require("connect-flash");
 const passport=require("passport");
 const LocalStrategy=require("passport-local");
@@ -34,45 +36,74 @@ app.use(express.static(path.join(__dirname,"public")));
 app.get("/",(req,res)=>{
     res.render("Layout/boilerplate.ejs");
 })
-app.get("/calculator",(req,res)=>{
+// wrap ansyn try-catch  block won't catch asynchronous errors that occur during the rendering process. 
+const wrapAsync = (fn) => {
+    return (req, res, next) => {
+        fn(req, res, next).catch(next);
+    };
+};
+app.get("/calculator", wrapAsync(async (req, res, next) => {
     res.render("Components/Calculator/calculator.ejs");
-})
-app.get("/Notes",(req,res)=>{
+}));
+
+app.get("/Notes", wrapAsync(async (req, res, next) => {
     res.render("Components/Notes/Notes.ejs");
-})
-app.get("/dict",(req,res)=>{
+}));
+
+app.get("/dict", wrapAsync(async (req, res, next) => {
     res.render("Components/Dictionary/dictionary.ejs");
-})
-app.get("/weather",(req,res)=>{
+}));
+
+app.get("/weather", wrapAsync(async (req, res, next) => {
     res.render("Components/Weather/weather.ejs");
-})
-app.get("/Clock",(req,res)=>{
+}));
+
+app.get("/Clock", wrapAsync(async (req, res, next) => {
     res.render("Components/Clock/Clock.ejs");
-})
-app.get("/Quiz",(req,res)=>{
+}));
+
+app.get("/Quiz", wrapAsync(async (req, res, next) => {
     res.render("Quiz/Quiz.ejs");
-})
-app.get("/Note",(req,res)=>{
+}));
+
+app.get("/Note", wrapAsync(async (req, res, next) => {
     res.render("Notes/Notes.ejs");
-})
-app.post("/save-quiz",async(req,res)=>{
-  const quizInstance=new Quiz_model({Total_question:req.body.Total_question,Correct:req.body.Correct})
+}));
+
+app.post("/save-quiz", wrapAsync(async (req, res, next) => {
+    const quizInstance = new Quiz_model({ Total_question: req.body.Total_question, Correct: req.body.Correct });
     const savedQuiz = await quizInstance.save();
     // console.log('Quiz created successfully:', savedQuiz);
-})
-app.post("/save-Notes",async(req,res)=>{
-    const NoteInstance=new Note_model({Subject:req.body.Subject ,content:req.body.content});
+}));
+// problem
+app.post("/save-Notes", wrapAsync(async (req, res, next) => {
+    const NoteInstance = new Note_model({ Subject: req.body.Subject, content: req.body.content });
     const savedNote = await NoteInstance.save();
     //  console.log('Notes created successfully:', savedNote);
-})
-app.get("/Contact",(req,res)=>{
+
+}));
+
+app.get("/Contact", wrapAsync(async (req, res, next) => {
     res.render("Contact-Us/Contact.ejs");
-})
-app.post("/Contact",async(req,res)=>{
+}));
+app.post("/Contact",async(req,res,next)=>{
+    try{
     const ContactInstance=new Contact_model({Name:req.body.Name ,Email:req.body.Email,Message:req.body.Message,FindUs:req.body.FindUs});
     const savedContact = await ContactInstance.save();
-      console.log('COntact created successfully:', savedContact);
+    //  console.log('COntact created successfully:', savedContact);
     setTimeout(()=>{
         res.redirect("/Contact");
     },3000); 
+}catch(err){
+    next(new expresserror(500,"Data not sent try again"))
+}
+});
+app.get("*",(req,res,next)=>{
+    next(new expresserror(404,"Page Not Found"))
 })
+// Error Handle Middleware
+app.use((err, req, res, next) => {
+console.log("error");
+    const status = err.status || 500; // Default to 500 if status is undefined
+    res.status(status).redirect("/Contact");
+});
