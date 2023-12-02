@@ -1,6 +1,6 @@
-var draggedElement; //element that's dragged
-var xOffset = 10; //the defualt offset of the elements
-var yOffset = 10;
+let draggedElement; //element that's dragged
+let xOffset = 10; //the defualt offset of the elements
+let yOffset = 10;
 
 //calls function when mouse in down/pressed
 function dragStart(element) {
@@ -14,16 +14,13 @@ function dragStart(element) {
 		draggedElement.parentNode.style.top = "0px";
 
 	//get the position of the cursors
-	//event.pagex is use to get value of element x value
-	//parse int helps in converting into integerr
-	//parentNode get parent
+	//i found that cursor and element have slight diffrence in movement so this code fixes it
 	xOffset = event.pageX - parseInt(draggedElement.parentNode.style.left);
 	yOffset = event.pageY - parseInt(draggedElement.parentNode.style.top);
 	//console.log( "first"+xOffset+ " "+yOffset);
 	//adds eventListeners and remove them after drag is finished
 	//the reason we can't just add eventListeners to the elements that going to be drags is because if the mouse moves too fast it goes out of the element and stops dragging.
 	document.addEventListener("mousemove", drag);
-
 	//when mouse pressed and draged 
 	document.addEventListener("mouseup", endDrag);
 	//when mouse released and draged

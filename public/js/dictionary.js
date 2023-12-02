@@ -3,7 +3,6 @@ const search = async() => {
     // removing unwanted space
     input = input.trim()  
     if (input != '') {
-        try{
         await fetch(`https://api.dictionaryapi.dev/api/v2/entries/en/${input}`)
             .then(res => res.json())
             .then(data => {
@@ -25,8 +24,7 @@ const search = async() => {
                     }
                 }
             })
-        }catch(err){
-        }
+        
     } else {
         //reseting if empty
         document.getElementById('word').innerHTML = "--"

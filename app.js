@@ -1,6 +1,7 @@
-const express=require('express');   //require express
-const app=express();                // selecting out app out of express
-const methodoverride=require('method-override'); //for overrinding post and get
+// ---------------------------Requiring Files,data,etc-----------------------------------
+const express=require('express');   
+const app=express();              
+const methodoverride=require('method-override'); 
 app.use(methodoverride("_method"));
 const mongoose=require('mongoose');
 const ejsmate=require("ejs-mate");
@@ -11,12 +12,14 @@ const expresserror=require("./expresserror.js")
 const Contact_validate=require("./Validation/Contact_validation.js");
 const Note_validation=require("./Validation/Note_validation.js");
 const Quiz_validation=require("./Validation/Quiz_validation.js");
-
-const User_model=require("./models/User.js")
+const sessions=require("express-session");
+const Cookie_parser=require("cookie-parser");
+const User_model=require("./models/User.js");
 const flash=require("connect-flash");
 const passport=require("passport");
 const LocalStrategy=require("passport-local");
 app.engine('ejs', ejsmate);
+// ------------------------Starting Server-------------------------------------
 main()
     .then(()=>{
         console.log("Successful")
@@ -27,52 +30,93 @@ main()
 async function main(){
     await mongoose.connect('mongodb://127.0.0.1:27017/student_portal');
 } 
-
-app.use(express.urlencoded({ extended:true })); //used during geting data from  post body
-app.set("view engine","ejs");   //intialising views folder for ejs files
+// ----------------------Some Basic Funtion Code-----------------------------------------
+app.use(express.urlencoded({ extended:true })); 
+app.set("view engine","ejs");   
 const path=require("path");
-app.listen("8080",(req,res)=>{     //started listening connections
+const User = require('./models/User.js');
+app.listen("8080",(req,res)=>{
     console.log("Server is listening to 8080");
 });
 app.use(express.json());
 app.set("views",path.join(__dirname,"/views"));
 app.use(express.static(path.join(__dirname,"public"))); 
-app.get("/",(req,res)=>{
-    res.render("Layout/boilerplate.ejs");
+const session_options={
+    secret:"SomeRandomSecreatKey",
+    resave:false,
+    saveUninitialized:true,
+    cookie:{
+        expires:Date.now()+1000*60*60*24*7,  //7days
+        maxAge:1000*60*60*24*7,
+        httpOnly:true,
+    }
+}
+app.use(sessions(session_options));
+app.use(flash())
+//login/signup
+app.use(passport.initialize());
+app.use(passport.session());
+passport.use(new LocalStrategy(User_model.authenticate()));
+passport.serializeUser(User_model.serializeUser());
+passport.deserializeUser(User_model.deserializeUser());
+//flash middleware
+app.use((req,res,next)=>{
+    res.locals.success=req.flash("Success");
+    res.locals.fail=req.flash("Fail");
+    next();
 })
-// wrap ansyn try-catch  block won't catch asynchronous errors that occur during the rendering process. 
+//---------------------------wrap ansyn---------------------------------------------------------
 const wrapAsync = (fn) => {
     return (req, res, next) => {
         fn(req, res, next).catch(next);
     };
 };
-app.get("/calculator", wrapAsync(async (req, res, next) => {
+//-------------------------Rounting Paths------------------------------------------------------------
+app.get("/calculator",(req, res) => {
     res.render("Components/Calculator/calculator.ejs");
-}));
-
-app.get("/Notes", wrapAsync(async (req, res, next) => {
+});
+app.get("/login",(req,res)=>{
+    res.render("Sign/Login.ejs");
+})
+app.post("/login",
+passport.authenticate("local",{
+    failureRedirect:"/login",
+    failureFlash:true,
+})
+,async(req,res)=>{
+    res.redirect("/Quiz");
+})
+// app.get("/demouser",async(req,res)=>{
+//     const User1=new User_model({
+//         email:"Kapoor@gmail.com",
+//         username:"Kapoor",
+//     })
+//    const fakeUser=await User_model.register(User1,"Sagar");
+//    res.send(fakeUser);
+// })
+app.get("/Notes",(req, res) => {
     res.render("Components/Notes/Notes.ejs");
-}));
+});
 
-app.get("/dict", wrapAsync(async (req, res, next) => {
+app.get("/dict",(req, res) => {
     res.render("Components/Dictionary/dictionary.ejs");
-}));
+});
 
-app.get("/weather", wrapAsync(async (req, res, next) => {
+app.get("/weather",(req, res) => {
     res.render("Components/Weather/weather.ejs");
-}));
+});
 
-app.get("/Clock", wrapAsync(async (req, res, next) => {
+app.get("/Clock",(req, res) => {
     res.render("Components/Clock/Clock.ejs");
-}));
+});
 
-app.get("/Quiz", wrapAsync(async (req, res, next) => {
+app.get("/Quiz",(req, res) => {
     res.render("Quiz/Quiz.ejs");
-}));
+});
 
-app.get("/Note", wrapAsync(async (req, res, next) => {
+app.get("/Note",(req, res, next) => {
     res.render("Notes/Notes.ejs");
-}));
+});
 
 app.post("/save-quiz",async (req, res, next) => {
     const quizObject={ Total_question: req.body.Total_question, Correct: req.body.Correct };
@@ -135,6 +179,7 @@ app.post("/Contact", async (req, res, next) => {
 
             try {
                 const savedContact = await ContactInstance.save();
+                req.flash("Success","Response Sent Succesfully")
                 // console.log('Contact created successfully:', savedContact);
                 setTimeout(() => {
                     res.redirect("/Contact");
@@ -149,17 +194,13 @@ app.post("/Contact", async (req, res, next) => {
         next(error);
     }
 });
-
 app.get("*",(req,res,next)=>{
     next(new expresserror(404,"Page Not Found"))
 })
-// Error Handle Middleware
+//-----------------------------Error Handle Middleware--------------------------------------------
 app.use((err, req, res, next) => {
-console.log("error");
     const status = err.status || 500; // Default to 500 if status is undefined
-    if(err.message!=="Validation failed"){
-    res.status(status).send(`Status: ${status}      Message: ${err.message}  Name:${err.name} `);
-    }else{
-        console.log("Yes")
-    }
+    // res.status(status).send(`Status: ${status}      Message: ${err.message}  Name:${err.name} `);
+    req.flash("Fail",`An Error Occured here :- ${err.message}`);
+    res.redirect("/Contact");
 });

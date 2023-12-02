@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <!-- Include SweetAlert library -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</head>
+<body>
+    <% if (fail && fail.length) { %>
+        <div>
+            <script>
+                function Failure() {
+                    Swal.fire({
+                        title: 'Error!',
+                        text: '<%= fail %>',
+                        icon: 'error',
+                        confirmButtonText: 'Ok'
+                    });
+                }
+                Failure();
+            </script>
+        </div>
+    <% } %>
+    <% if (success && success.length) { %>
+        <div>
+            <script>
+                function Succesfull() {
+                    Swal.fire({
+                        title: 'Submitted!',
+                        text: '<%= success %>',
+                        icon: 'success',
+                        confirmButtonText: 'Ok'
+                    });
+                }
+                Succesfull();
+            </script>
+        </div>
+    <% } %>
+</body>
+</html>
