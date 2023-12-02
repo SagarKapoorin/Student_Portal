@@ -13,7 +13,6 @@ const Contact_validate=require("./Validation/Contact_validation.js");
 const Note_validation=require("./Validation/Note_validation.js");
 const Quiz_validation=require("./Validation/Quiz_validation.js");
 const sessions=require("express-session");
-const Cookie_parser=require("cookie-parser");
 const User_model=require("./models/User.js");
 const flash=require("connect-flash");
 const passport=require("passport");
@@ -84,18 +83,23 @@ passport.authenticate("local",{
     failureFlash:true,
 })
 ,async(req,res)=>{
+    req.session.userid=req.user._id;
     res.redirect("/Quiz");
 })
-// app.get("/demouser",async(req,res)=>{
-//     const User1=new User_model({
-//         email:"Kapoor@gmail.com",
-//         username:"Kapoor",
-//     })
-//    const fakeUser=await User_model.register(User1,"Sagar");
-//    res.send(fakeUser);
-// })
-app.get("/Notes",(req, res) => {
+app.get("/demouser",async(req,res)=>{
+    const User1=new User_model({
+        email:"Sagar@gmail.com",
+        username:"Sagar",
+    })
+   const fakeUser=await User_model.register(User1,"Sagar");
+   res.send(fakeUser);
+})
+app.get("/Notes",(req, res,next) => {
+    if(req.isAuthenticated()){
     res.render("Components/Notes/Notes.ejs");
+    }else{
+        next(new expresserror(500,"User Not login"))
+    }
 });
 
 app.get("/dict",(req, res) => {
@@ -110,15 +114,27 @@ app.get("/Clock",(req, res) => {
     res.render("Components/Clock/Clock.ejs");
 });
 
-app.get("/Quiz",(req, res) => {
+app.get("/Quiz",(req, res,next) => {
+    if(req.isAuthenticated()){
     res.render("Quiz/Quiz.ejs");
+    }else{
+        next(new expresserror(500,"User Not Login"))
+    }
 });
 
 app.get("/Note",(req, res, next) => {
     res.render("Notes/Notes.ejs");
 });
-
+app.get("/logout",(req,res,next)=>{
+    req.logout((err)=>{
+        next(err);
+        console.log("Logout Error");
+    })
+    res.redirect("/Note")
+})
+// fist authenticate->try/catch+validation->save quiz->link quiz with user id..
 app.post("/save-quiz",async (req, res, next) => {
+    if(req.isAuthenticated()){
     const quizObject={ Total_question: req.body.Total_question, Correct: req.body.Correct };
     const { error,value }=Quiz_validation(quizObject);
         if(error){
@@ -126,18 +142,26 @@ app.post("/save-quiz",async (req, res, next) => {
             throw new expresserror(500, "Validation failed");
         }else{
         console.log(value);
-        const quizInstance = new Quiz_model(quizObject);
+        const quizInstance = await Quiz_model.create(quizObject);
             try{
             const savedQuiz = await quizInstance.save();
             console.log('Quiz created successfully:', savedQuiz);
+            const user=await User_model.findById(req.session.userid);
+            user.Quize.push(savedQuiz._id);
+            const s=await user.save();
+            console.log(s.Quize)
             }catch (err) {
                 // console.error('Error saving Quiz:', err);
                 return next(new expresserror(500, "Unable to save Quiz. Check connection."));
             }
         }
+    }else{
+        next(new expresserror(500,"User not login"))
+    }
 });
 // problem
 app.post("/save-Notes",async (req, res, next) => {
+    if(req.isAuthenticated()){
     const NoteObject={ Subject: req.body.Subject, content: req.body.content };
     const { error ,value }=Note_validation(NoteObject);
     if(error){
@@ -149,17 +173,28 @@ app.post("/save-Notes",async (req, res, next) => {
     try{
     const savedNote = await NoteInstance.save();
     //  console.log('Notes created successfully:', savedNote);
+    const user=await User_model.findById(req.session.userid);
+    user.Notes.push(savedNote._id);
+    const s=await user.save();
+    console.log(s.Quize)
     }catch(err){
          console.error('Error saving Note:', err);
          return next(new expresserror(500, "Unable to save Note. Check connection."));
     }
     }
+}else{
+    next(new expresserror(500,"User Not login"))
+}
 });
 app.get("/Contact", wrapAsync(async (req, res, next) => {
+    if(req.isAuthenticated()){
     res.render("Contact-Us/Contact.ejs");
+    }else{
+        next(new expresserror(500,"User not login"))
+    }
 }));
 app.post("/Contact", async (req, res, next) => {
-    try{
+    if(req.isAuthenticated()){
         const contactObject = {
             Name: req.body.Name,
             Email: req.body.Email,
@@ -190,8 +225,8 @@ app.post("/Contact", async (req, res, next) => {
                 return next(new expresserror(500, "Unable to save contact. Check connection."));
             }
         }
-    }catch(error){
-        next(error);
+    }else{
+        next(new expresserror(500,"User not login"));
     }
 });
 app.get("*",(req,res,next)=>{
@@ -202,5 +237,5 @@ app.use((err, req, res, next) => {
     const status = err.status || 500; // Default to 500 if status is undefined
     // res.status(status).send(`Status: ${status}      Message: ${err.message}  Name:${err.name} `);
     req.flash("Fail",`An Error Occured here :- ${err.message}`);
-    res.redirect("/Contact");
+    res.redirect("/Note");
 });

@@ -18,10 +18,10 @@ const Userschema = new Schema({
         type:mongoose.Schema.Types.ObjectId,
         ref:'Notes',
     }],
-    Quize:{
+    Quize:[{
         type:mongoose.Schema.Types.ObjectId,
         ref:'Quize',
-    },
+    }],
     Review:[{
         type:mongoose.Schema.Types.ObjectId,
         ref:'Review',
