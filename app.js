@@ -74,6 +74,31 @@ const wrapAsync = (fn) => {
 app.get("/calculator",(req, res) => {
     res.render("Components/Calculator/calculator.ejs");
 });
+app.get("/signup",(req,res)=>{
+    res.render("Sign/Sign.ejs");
+})
+app.post("/signup",wrapAsync(async(req,res,next)=>{
+    try{
+        let { username, password, email}=req.body;
+        console.log(username+" "+password+" "+email);
+        const newUser=new User_model({email,username});
+        console.log(newUser+"------");
+        const registerUser=await User_model.register(newUser,password);
+       
+        req.login(registerUser,(err)=>{
+            if(err){
+                next(err);
+            }
+            req.session.userid=registerUser._id;
+            // console.log(req.session.userid)
+            req.flash("Success","User Loggedin")
+            res.redirect("/Note");
+        });
+       
+    }catch(err){
+       next(err);
+    }
+}));
 app.get("/login",(req,res)=>{
     res.render("Sign/Login.ejs");
 })
@@ -82,10 +107,10 @@ passport.authenticate("local",{
     failureRedirect:"/login",
     failureFlash:true,
 })
-,async(req,res)=>{
+,wrapAsync(async(req,res,next)=>{
     req.session.userid=req.user._id;
     res.redirect("/Quiz");
-})
+}));
 app.get("/demouser",async(req,res)=>{
     const User1=new User_model({
         email:"Sagar@gmail.com",
@@ -136,6 +161,7 @@ app.get("/logout",(req,res,next)=>{
 app.post("/save-quiz",async (req, res, next) => {
     if(req.isAuthenticated()){
     const quizObject={ Total_question: req.body.Total_question, Correct: req.body.Correct };
+    console.log(req.session.userid);
     const { error,value }=Quiz_validation(quizObject);
         if(error){
             console.log(error.details[0].message);
@@ -146,6 +172,7 @@ app.post("/save-quiz",async (req, res, next) => {
             try{
             const savedQuiz = await quizInstance.save();
             console.log('Quiz created successfully:', savedQuiz);
+            console.log(req.session.userid);
             const user=await User_model.findById(req.session.userid);
             user.Quize.push(savedQuiz._id);
             const s=await user.save();

@@ -24,12 +24,13 @@
             </script>
         </div>
     <% } %>
+    
     <% if (success && success.length) { %>
         <div>
             <script>
                 function Succesfull() {
                     Swal.fire({
-                        title: 'Submitted!',
+                        title: 'Done!',
                         text: '<%= success %>',
                         icon: 'success',
                         confirmButtonText: 'Ok'
