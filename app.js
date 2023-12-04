@@ -111,14 +111,14 @@ passport.authenticate("local",{
     req.session.userid=req.user._id;
     res.redirect("/Quiz");
 }));
-app.get("/demouser",async(req,res)=>{
-    const User1=new User_model({
-        email:"Sagar@gmail.com",
-        username:"Sagar",
-    })
-   const fakeUser=await User_model.register(User1,"Sagar");
-   res.send(fakeUser);
-})
+// app.get("/demouser",async(req,res)=>{
+//     const User1=new User_model({
+//         email:"Sagar@gmail.com",
+//         username:"Sagar",
+//     })
+//    const fakeUser=await User_model.register(User1,"Sagar");
+//    res.send(fakeUser);
+// })
 app.get("/Notes",(req, res,next) => {
     if(req.isAuthenticated()){
     res.render("Components/Notes/Notes.ejs");
@@ -152,10 +152,13 @@ app.get("/Note",(req, res, next) => {
 });
 app.get("/logout",(req,res,next)=>{
     req.logout((err)=>{
-        next(err);
-        console.log("Logout Error");
+        if(err){
+            next(err)
+        }else{
+            res.redirect("/Note");
+        }
     })
-    res.redirect("/Note")
+   
 })
 // fist authenticate->try/catch+validation->save quiz->link quiz with user id..
 app.post("/save-quiz",async (req, res, next) => {
@@ -261,7 +264,7 @@ app.get("*",(req,res,next)=>{
 })
 //-----------------------------Error Handle Middleware--------------------------------------------
 app.use((err, req, res, next) => {
-    const status = err.status || 500; // Default to 500 if status is undefined
+    const status = err.status || 500;
     // res.status(status).send(`Status: ${status}      Message: ${err.message}  Name:${err.name} `);
     req.flash("Fail",`An Error Occured here :- ${err.message}`);
     res.redirect("/Note");
