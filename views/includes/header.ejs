@@ -4,7 +4,7 @@
     </div>
     <div class="header_b">
         <div id="add-button" class="header-item">
-            <div id="plus-button"><i class="ri-add-line"></i></div>
+            <div id="plus-button"><i class="ri-add-line"> Quick Add</i></div>
             <div class="drop-down">
                 <div onclick="addNotes()"> <i class="ri-file-copy-2-line"></i> Notes</div>
                 <div onclick="adddict()"> <i class="ri-book-line"></i> Dictionary</div>
@@ -13,14 +13,17 @@
                 <div onclick="addweather()"><i class="ri-sun-cloudy-line"></i> Weather</div>
             </div>
         </div>
+        <% if(!person){ %>
         <form action="/login" method="get">
             <button> <i class="ri-login-box-line"></i> Login</button>
         </form>
         <form action="/signup" method="get">
-            <button><i class="ri-account-pin-box-line"></i> Sign Up</button>
+            <button><i class="ri-user-add-line"></i> Sign Up</button>
         </form>
+        <% }else {%>
         <form action="/logout" method="get">
             <button><i class="ri-logout-box-r-line"></i> Logout</button>
         </form>
+        <% } %>
     </div>
 </div>

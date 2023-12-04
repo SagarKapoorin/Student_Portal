@@ -177,17 +177,19 @@ align-items: center;
   justify-content: flex-end;
   /* align-items: center ; */
   margin-top: 0.4rem;
+  margin-right: 0.4rem;
 }
 .header_b>form>button{
   margin-left: 0.5rem;
   margin-right:0.5rem;
   background-color:#f8f9fb ;
   color: #3b3878;
-  font-weight:500;
+  font-weight:700;
   cursor: pointer;
   transition: all 0.3s ease 0s;
+  font-family: 'remixicon' !important;
 }
-.header_b>form>button:hover{
+.header_b>form>button:hover,#plus-button:hover{
    transform: translateY(-7px);
    font-weight: 700;
 }
@@ -198,6 +200,7 @@ align-items: center;
 }
 #plus-button{
   margin-right: 0.5rem;
+  transition: all 0.3s ease 0s;
 }
 .drop-down div{
   color: #3b3878;

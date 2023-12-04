@@ -62,6 +62,7 @@ passport.deserializeUser(User_model.deserializeUser());
 app.use((req,res,next)=>{
     res.locals.success=req.flash("Success");
     res.locals.fail=req.flash("Fail");
+    res.locals.person=req.user;
     next();
 })
 //---------------------------wrap ansyn---------------------------------------------------------
