@@ -3,13 +3,37 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/login.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/3.6.0/remixicon.css" integrity="sha512-GL7EM8Lf8kU23I3kTio2kRWt8YRDVIQcSZjRVtVRfk05kB/QvkyafuTC94Ev0X6qk7Z0r5s06c1lsP1p/ezDYw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <title>Login</title>
 </head>
 <body>
+    <header>
+        <p class="Logo"><img class="Logo_Image" src="src/Logo1.png">EduCrafter</p>
+    </header>
+    <div class="main">
+    <div class="main_a">
+    <div class="heading"><h2>Login</h2></div>
+    <div class="intro"><p>Welcome Back.Please Login into Your Account</p></div>
     <form method="post" action="/login">
-        <input name="username">
-        <input name="password">
-        <button>submit</button>
+        <label for="username">Username</label>
+        <i class="ri-user-line icon"></i>
+        <input name="username" id="username" placeholder="Username" class="input_field">
+        <label for="password">Password</label>
+        <i class="ri-lock-password-line icon"></i>
+        <input name="password"  id="username" placeholder="Password"  type="password"class="input_field">
+        <div class="buttons">
+        <button type="submit">Login</button>
+        <button type="button">Sign Up</button>
+        </div>
     </form>
+</div>
+<div class="main_b">
+    <img src="src/Login.svg">
+</div>
+</div>
 </body>
 </html>
