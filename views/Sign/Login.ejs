@@ -14,26 +14,40 @@
     <header>
         <p class="Logo"><img class="Logo_Image" src="src/Logo1.png">EduCrafter</p>
     </header>
+    <div class="bookworm">
+    <img src="src/Bookworm.jpg" class="Bookworm">
+    <div class="eye_corner">
+        <div class="eye" id="eye">
+            <div class="pupil" id="pupil"></div>
+        </div>
+        <div class="eye" id="eye_b">
+            <div class="pupil" id="pupil_b"></div>
+        </div>
+    </div>
+    
+</div>
     <div class="main">
     <div class="main_a">
     <div class="heading"><h2>Login</h2></div>
-    <div class="intro"><p>Welcome Back.Please Login into Your Account</p></div>
+    <div class="intro"><p><span>Welcome  Back </span> .Please Login into Your Account</p></div>
     <form method="post" action="/login">
         <label for="username">Username</label>
         <i class="ri-user-line icon"></i>
-        <input name="username" id="username" placeholder="Username" class="input_field">
+        <input name="username" id="username" placeholder="Username" class="input_field" onblur="Remove(this)" oninput="Border(this)" required>
         <label for="password">Password</label>
         <i class="ri-lock-password-line icon"></i>
-        <input name="password"  id="username" placeholder="Password"  type="password"class="input_field">
+        <input name="password"  id="password" placeholder="Password"  type="password"class="input_field" onblur="Remove(this)" oninput="Border(this)" required>
         <div class="buttons">
-        <button type="submit">Login</button>
-        <button type="button">Sign Up</button>
+        <button type="submit" class="submit" >Login</button>
+        <button type="button" class="button" onclick="redirect()">Sign Up</button>
         </div>
     </form>
 </div>
 <div class="main_b">
-    <img src="src/Login.svg">
+    <img src="src/Login.svg" class="image_a">
+    <img src="src/Login_b.svg" class="image_b">
 </div>
 </div>
+<script src="js/Login.js"></script>
 </body>
 </html>
