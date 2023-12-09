@@ -121,11 +121,7 @@ passport.authenticate("local",{
 //    res.send(fakeUser);
 // })
 app.get("/Notes",(req, res,next) => {
-    if(req.isAuthenticated()){
     res.render("Components/Notes/Notes.ejs");
-    }else{
-        next(new expresserror(500,"User Not login"))
-    }
 });
 
 app.get("/dict",(req, res) => {
