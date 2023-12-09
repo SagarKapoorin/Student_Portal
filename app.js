@@ -33,7 +33,6 @@ async function main(){
 app.use(express.urlencoded({ extended:true })); 
 app.set("view engine","ejs");   
 const path=require("path");
-const User = require('./models/User.js');
 app.listen("8080",(req,res)=>{
     console.log("Server is listening to 8080");
 });
@@ -108,10 +107,11 @@ passport.authenticate("local",{
     failureRedirect:"/login",
     failureFlash:true,
 })
-,wrapAsync(async(req,res,next)=>{
+,async(req,res,next)=>{
     req.session.userid=req.user._id;
+    req.flash("Success","User Login Succesfully")
     res.redirect("/Quiz");
-}));
+});
 // app.get("/demouser",async(req,res)=>{
 //     const User1=new User_model({
 //         email:"Sagar@gmail.com",
