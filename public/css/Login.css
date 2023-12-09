@@ -1,6 +1,9 @@
 *{
     font-family: 'Open Sans', sans-serif;
 }
+body,html{
+  overflow: hidden;
+}
 .input_field {
     width: auto;
     height: 40px;
@@ -27,6 +30,9 @@
     margin-top: 30px;
     margin-left: 40%;
 }
+.signupp{
+  display: inline;
+}
 form{
     line-height: 43px;
 }
@@ -52,8 +58,134 @@ align-items: center;
 }
 .intro{
     font-size: 0.9rem;
+    font-weight: 700;
 }
-.main_b>img{
-width: auto;
-height: auto;
+.main_b{
+  display: flex;
 }
+.image_a{
+  position: relative;
+width: 100%;
+  max-width: 300px;
+  height: auto;
+}
+.image_b{
+  position: relative;
+width: 100%;
+  max-width: 270px;
+  height: auto;
+}
+.submit{
+  margin: 0 5px;
+  height: 40px;
+  width: 100px;
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
+  border: none;
+  outline: none;
+  border-radius: 5px;
+  border: 2px solid #ff9500;
+  transition: all 0.3s ease;
+  color: #ff9500;
+  background: #fff;
+  font-weight: 700;
+}
+h2{
+  color:#ff9500;
+}
+.submit:hover{
+  color: #fff;
+  background: #ff9500;
+}
+.button{
+  margin: 0 5px;
+  height: 40px;
+  width: 100px;
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
+  border: none;
+  outline: none;
+  border-radius: 5px;
+  transition: all 0.3s ease;
+  color: white;
+  background: #ff9500;
+  font-weight: 700;
+}
+.heading{
+  color:#A77B7F;
+}
+span{
+  position: relative;
+  display: inline-block;
+  padding-bottom: 7px;
+  color:#ff9500;
+}
+span::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 5px;
+  background-color: #ff9500;
+  border-radius: 15px;
+  width: 90%;
+  animation: widthChange 2s infinite alternate;
+}
+@keyframes widthChange {
+  to {
+      width: 150%; /* Adjust the final width as needed */
+  }
+}
+.button:hover{
+ background-color:  #f8b85e;
+}
+header{
+  font-weight: 700;
+}
+.bookworm {
+  position: fixed;
+  top:-5px;
+  left: 43%;
+  z-index: -3;
+}
+.Bookworm{
+  width: 130px;
+}
+.eye_corner {
+  width: 51px;
+  height: 200px;
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+  top: -121px; 
+  left: 28%; 
+}
+label{
+  padding-left: 1rem;
+  font-weight: 600;
+}
+.eye {
+  width: 23px;
+  height: 23px;
+  background-color: black;
+  border-radius: 50%;
+  position: relative;
+  overflow: hidden;
+}
+
+.pupil {
+  width: 10px;
+  height: 10px;
+  background-color: white;
+  border-radius: 50%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.activeBox{
+  border-left: 5px solid #ff9500;
+  }
