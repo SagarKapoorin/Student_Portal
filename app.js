@@ -243,9 +243,7 @@ app.post("/Contact", async (req, res, next) => {
                 const savedContact = await ContactInstance.save();
                 req.flash("Success","Response Sent Succesfully")
                 // console.log('Contact created successfully:', savedContact);
-                setTimeout(() => {
                     res.redirect("/Contact");
-                }, 3000);
                 
             } catch (err) {
                 // console.error('Error saving contact:', err);

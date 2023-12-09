@@ -22,9 +22,9 @@ const Userschema = new Schema({
         type:mongoose.Schema.Types.ObjectId,
         ref:'Quize',
     }],
-    Review:[{
+    Game:[{
         type:mongoose.Schema.Types.ObjectId,
-        ref:'Review',
+        ref:'Game',
     }]
 });
 Userschema.post("findOneAndDelete",async(user)=>{
