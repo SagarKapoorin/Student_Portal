@@ -1,0 +1,69 @@
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+button,
+input {
+  outline: none;
+  border: none;
+}
+a {
+    text-decoration: none;
+}
+  
+img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+}
+ul {
+      list-style: none;
+}
+body{
+    overflow-y: scroll;
+}
+.Profile_img{
+    width:500px;
+}
+.Personal_info{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.Quiz_data{
+    width: 100%;
+    margin-top: 1rem;
+    margin-bottom: 2rem;
+}
+.All_Quizes{
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    gap:3rem;
+    align-items: center;
+    text-align: left;
+}
+.All_Notes{
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    gap:3rem;
+    align-items: center;
+    text-align: left;
+}
+.Notes_data{
+    width: 100%;
+    margin-top: 1rem;
+    margin-bottom: 2rem;
+}
+.Quiz_stats{
+    display: flex;
+    justify-content: space-between;
+    width: 70%;
+}
+.info{
+    line-height: 5rem;
+    width:40%;
+    margin:10px 10px 10px 1px;
+}
