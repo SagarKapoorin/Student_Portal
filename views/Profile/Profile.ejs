@@ -1,1 +1,76 @@
 <% layout('Layout/boilerplate.ejs') -%>
+<body>
+    <div class="Profile">
+        <h1>Personal Information</h1>
+        <div class="Personal_info">
+            <div class="img"><img src="src/Profile_c.svg" class="Profile_img"></div>
+            <div class="info">
+                <h3>Username: <%= data[0].username %></h3>
+                <h3>Email: <%= data[0].email %></h3>
+                <h3>Date Created: <%= data[0].date.toLocaleDateString() %></h3>
+                <button><a href="/Quiz">Edit Info</a></button>
+            </div>
+        </div>
+
+        <h1>Quiz Data</h1>
+        <% let maxScore=-1 %>
+        <% let TotalQuestions=0 %>
+        <% let Totalright=0 %>
+        <div class="Quiz_data">
+            <div class="All_Quizes">
+            <% if (data[0].Quize.length > 0) { %>
+                <% for (let i = 0; i < Math.min(data[0].Quize.length,3); i++) { %>
+                    <div>
+                    <ul>
+                        <li>Total Questions: <%= data[0].Quize[i].Total_question %></li>
+                        <li>Correct Answers: <%= data[0].Quize[i].Correct %></li>
+                        <li>Your Score is: <%=data[0].Quize[i].Correct/data[0].Quize[i].Total_question %></li>
+                        <% maxScore=Math.max(data[0].Quize[i].Correct/data[0].Quize[i].Total_question,maxScore) %>
+                        <% TotalQuestions+= data[0].Quize[i].Total_question %>
+                        <% Totalright+= data[0].Quize[i].Correct %>
+                        <br>
+                    </ul>
+                </div>
+                <% } %>
+                <button><a href="/<%=data[0]._id %>/Quiz">See all</a></button>
+            <% } else { %>
+                <p>No Quiz found.</p>
+            <% } %>
+        </div>
+            <div class="Quiz_stats">
+            <div class="text_stats">
+            <p>Your Maximum Score is : <%= maxScore %></p>
+            <p>Your Overall Score is : <%= Totalright/TotalQuestions %></p>
+            <p>Total Question Attempted : <%= TotalQuestions %></p>
+            <p> Total Right Anwers : <%= Totalright %> </p>
+            <p>Number of Quizes You take is: <%= data[0].Quize.length %> </p>
+            </div>
+            <div class="charts">
+                <p>CHarts here</p>
+            </div>
+            </div>
+        </div>
+        <h1>Notes Data</h1>
+        <div class="Notes_data">
+            <% let totalNote=0 %>
+            <div class="All_Notes">
+                <% if (data[0].Notes.length > 0) { %>
+                    <% for (let i = 0; i < Math.min(data[0].Notes.length,3); i++) { %>
+                        <div>
+                        <ul>
+                            <li>Subject: <%= data[0].Notes[i].Subject %></li>
+                            <li>Content: <%= data[0].Notes[i].content %></li>
+                            <li>Date: <%= data[0].Notes[i].date.toLocaleDateString() %></li>
+                            <br>
+                        </ul>
+                    </div>
+                    <% } %>
+                    <button><a href="/Note">See all</a></button>
+                <% } else { %>
+                    <p>No Note found.</p>
+                <% } %>
+            </div>
+            <p>Total Notes : <%= data[0].Notes.length %></p>
+            </div>
+    </div>
+</body>

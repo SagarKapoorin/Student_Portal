@@ -143,7 +143,23 @@ app.get("/Quiz",(req, res,next) => {
         next(new expresserror(500,"User Not Login"))
     }
 });
-
+app.get("/Profile",async(req, res,next) => {
+    if(req.isAuthenticated()){
+        try{
+        User_model.find({_id:req.session.userid}).populate('Quize').populate('Notes').then((data)=>{
+            // console.log(data[0].email);
+            // console.log(data[0].Notes);
+            res.render("Profile/Profile.ejs",{ data });
+        });
+       
+       }catch(err){
+        next(err);
+        }
+        }else{
+            next(new expresserror(500,"User Not Login"))
+    }
+   
+});
 app.get("/Note",(req, res, next) => {
     res.render("Notes/Notes.ejs");
 });
