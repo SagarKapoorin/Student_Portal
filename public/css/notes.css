@@ -37,6 +37,12 @@ button{
     overflow: hidden;
     font-size: 0.8rem;
 }
+.Format_buttons{
+    display: flex;
+    gap:5rem;
+    position: fixed;
+    top:285px;
+}
 .subject{
     margin-right: 0.1rem;
 }
@@ -48,22 +54,11 @@ button{
     font-size: 0.8rem;
     display: block;
     position: absolute;
-    top:210px;
+    top:240px;
     left:145px;
     font-weight: 900;
     color:red;
     display:none;
-}
-/* ------------------------------------Bold-italic-regular-------------------- */
-.bold{
-    font-weight: bold;
-}
-.italic{
-    font-style: italic;
-}
-.normal{
-    font-weight: normal;
-    font-style: normal;
 }
 /*  ----------hr-----------*/
 hr{
@@ -73,19 +68,11 @@ hr{
 /* ----button---------- */
 /* motive is to make a before that passes behind button text */
 .Bold{
-    position: fixed;
-    top:250px;
-    left:-10px;
+    position: relative;
 }
 .italic_text{
-    position: fixed;
-    top:250px;
-    left:90px;
-}
-.regular{
-    position: fixed;
-    top:250px;
-    left:190px;
+    position: relative;
+
 }
 button {
     font-size: 0.8rem;
@@ -127,6 +114,6 @@ button {
    }
    .Save{
     position: fixed;
-    top:290px;
+    top:285px;
     left:90px;
    }

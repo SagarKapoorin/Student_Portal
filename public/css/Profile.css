@@ -20,23 +20,33 @@ img {
 ul {
       list-style: none;
 }
+
+.No_charts{
+    width: 200px;
+}
 body{
     overflow-y: scroll;
 }
 .Profile_img{
-    width:500px;
+    width:440px;
+}
+.headingss{
+    text-align: center;
 }
 .Personal_info{
     display: flex;
-    justify-content: space-between;
+    gap:5rem;
     align-items: center;
 }
 .Quiz_data{
+    font-size: 0.85rem;
     width: 100%;
     margin-top: 1rem;
     margin-bottom: 2rem;
 }
 .All_Quizes{
+    margin-bottom: 3.5rem;
+    margin-top: 1rem;
     display: flex;
     flex-wrap: wrap;
     width: 100%;
@@ -44,26 +54,166 @@ body{
     align-items: center;
     text-align: left;
 }
+.N{
+    font-weight: 700;
+    font-style: italic;
+}
+.Image_Notes{
+    width:300px;
+}
+
 .All_Notes{
+    margin-bottom: 4rem;
+    font-size: 0.85rem;
     display: flex;
-    flex-wrap: wrap;
     width: 100%;
-    gap:3rem;
+    gap:2.5rem;
     align-items: center;
+    height: 200px;
     text-align: left;
+}
+.Notes_data{
+    font-size: 0.85rem;
+}
+.delete{
+    text-align: center;
+    margin-bottom: 1rem;
+}
+.Delete_button{
+    color:red;
+    background-color: white;
+    margin: 0 10px;
+    height: 45px;
+    padding: 0 20px;
+    font-size: 18px;
+    font-weight: 500;
+    cursor: pointer;
+    border: none;
+    outline: none;
+    border-radius: 5px;
+    border: 2px solid red;
+    transition: all 0.3s ease;
+}
+.Delete_button:hover{
+    color:white;
+    background-color: red;
+}
+.Notes_heading{
+    margin-bottom: 2rem;
 }
 .Notes_data{
     width: 100%;
     margin-top: 1rem;
     margin-bottom: 2rem;
 }
+.Image_notfound{
+    width: 200px;
+}
+.P{
+        color:#00ff00;
+        background-color: white;
+        margin: 0 10px;
+        height: 45px;
+        padding: 0 20px;
+        font-size: 18px;
+        font-weight: 500;
+        cursor: pointer;
+        border: none;
+        outline: none;
+        border-radius: 5px;
+        border: 2px solid #00ff00;
+        transition: all 0.3s ease;  
+}
+.P:hover{
+    color:white;
+    background-color: #00ff00;
+}
+.Cautions{
+    color:red;
+    font-size: 0.6rem;
+}
+.Cautions span{
+    font-weight: 700;
+}
+.text_stats{
+    width: 40%;
+    font-weight: 600;
+    font-style: italic;
+    padding: 1rem;
+    line-height: 1.9rem;
+}
 .Quiz_stats{
+border-radius: 20px;
+box-shadow:  -20px 20px 60px #bebebe,
+             20px -20px 60px #ffffff;
+    margin-bottom: 3rem;
+    margin-top: 3rem;
     display: flex;
-    justify-content: space-between;
-    width: 70%;
+    align-items: center;
+    gap:13rem;
+    width: 95%;
 }
 .info{
-    line-height: 5rem;
+    border-radius: 30px;
+    background: white;
+    box-shadow:  20px 20px 60px #d3d4d5,
+             -20px -20px 60px #ffffff;
+    padding: 1rem;
+    margin-right: 3rem;
+    line-height: 4rem;
     width:40%;
     margin:10px 10px 10px 1px;
+}
+.See_all{
+    cursor: pointer;
+    background-color: transparent;
+}
+.See_all a{
+    color:#5e36b4;
+    font-weight: 600;
+}
+.red {
+    background-color: #ff605c;
+}
+.Quiz_card{
+    border-radius: 50px;
+    box-shadow:  20px 20px 30px #aa8aef,
+                 -20px -20px 30px #ffffff;
+    color:#f6e3fe;
+    background: linear-gradient(to bottom, #aa8aef, #5e36b4);
+    height:220px;
+    border-radius: 20px;
+    line-height: 3rem;
+    width:200px;
+    padding-left: 1rem;
+    text-align: left;
+    font-weight: 600;
+}
+.Notes_card{
+    border-radius: 50px;
+    box-shadow:  20px 20px 20px #ff9aa8,
+                 -20px -20px 20px #ffffff;
+    color:#f6e3fe;
+    background: linear-gradient(to bottom, #ff9aa8, #fd4d58);
+    height:220px;
+    border-radius: 20px;
+    line-height: 3rem;
+    width:200px;
+    padding-left: 1rem;
+    text-align: left;
+} 
+.yellow {
+    background-color: #ffbd44;
+}
+   
+.green {
+    background-color: #00ca4e;
+}
+.box {
+    display: inline-block;
+    align-items: center;
+    width: 10px;
+    height: 10px;
+    padding: 1px;
+    border-radius: 50%;
 }
