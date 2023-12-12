@@ -123,7 +123,15 @@ passport.authenticate("local",{
 app.get("/Notes",(req, res,next) => {
     res.render("Components/Notes/Notes.ejs");
 });
-
+app.post("/Profile",(req,res,next)=>{
+    res.render("Password/Password");
+})
+app.delete("/:id/Profile",async (req,res,next)=>{
+    let { id }=req.params;
+    await User_model.findByIdAndDelete(id);
+    req.flash("Success","Profile Deleted SuccesFully")
+    res.redirect("/Note");
+})
 app.get("/dict",(req, res) => {
     res.render("Components/Dictionary/dictionary.ejs");
 });

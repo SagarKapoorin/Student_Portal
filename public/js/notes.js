@@ -1,18 +1,32 @@
 const text = document.getElementsByClassName('content');
 const errmsg=document.getElementsByClassName('error');
+// need to fix it ,using class to add bold will not cause bold to be applicable to text in database 
 function bold() {
-  text[0].classList.remove("normal");
-  text[0].classList.add("bold");
+  const textContent = text[0].innerHTML;
+  const isBoldPresent = textContent.includes('<b>');
+  if(!isBoldPresent){
+    const newtext=`<b> ${textContent} </b>`
+    text[0].innerHTML=newtext;
+    // console.log(text[0].innerHTML);
+  }else{
+    const newtext = textContent.replace(/<\/?b>/g, '');
+        text[0].innerHTML = newtext;
+        // console.log(text[0].innerHTML)
+  }
 };
 
 function italic(){
-  text[0].classList.remove("normal");
-  text[0].classList.add("italic");
-}
-function regular(){
-  text[0].classList.remove("italic");
-  text[0].classList.remove("bold");
-  text[0].classList.add("normal");
+  const textContent = text[0].innerHTML;
+  const isBoldPresent = textContent.includes('<i>');
+  if(!isBoldPresent){
+    const newtext=`<i> ${textContent} </i>`
+    text[0].innerHTML=newtext;
+    // console.log(text[0].innerHTML);
+  }else{
+    const newtext = textContent.replace(/<\/?i>/g, '');
+        text[0].innerHTML = newtext;
+        // console.log(text[0].innerHTML);
+  }
 }
 function countword_description(text, event){
   limit = text.innerText;
