@@ -92,7 +92,7 @@ app.post("/signup",wrapAsync(async(req,res,next)=>{
             req.session.userid=registerUser._id;
             // console.log(req.session.userid)
             req.flash("Success","User Loggedin")
-            res.redirect("/Note");
+            res.redirect("/login");
         });
        
     }catch(err){
@@ -126,11 +126,17 @@ app.get("/Notes",(req, res,next) => {
 app.post("/Profile",(req,res,next)=>{
     res.render("Password/Password");
 })
+app.delete("/:id/Note",async (req,res,next)=>{
+    let { id }=req.params;
+    await Note_model.findByIdAndDelete(id);
+    req.flash("Success","Note Deleted SuccesFully")
+    res.redirect("/Note");
+});
 app.delete("/:id/Profile",async (req,res,next)=>{
     let { id }=req.params;
     await User_model.findByIdAndDelete(id);
     req.flash("Success","Profile Deleted SuccesFully")
-    res.redirect("/Note");
+    res.redirect("/login");
 })
 app.get("/dict",(req, res) => {
     res.render("Components/Dictionary/dictionary.ejs");
@@ -168,15 +174,28 @@ app.get("/Profile",async(req, res,next) => {
     }
    
 });
-app.get("/Note",(req, res, next) => {
-    res.render("Notes/Notes.ejs");
+app.get("/Note",(req, res, next) => {  
+    if(req.isAuthenticated()){
+        try{
+        User_model.find({_id:req.session.userid}).populate('Quize').populate('Notes').then((data)=>{
+            const N=data[0].Notes;
+            console.log(N);
+            res.render("Notes/Notes.ejs" ,{ N });
+        });
+       
+       }catch(err){
+        next(err);
+        }
+        }else{
+            next(new expresserror(500,"User Not Login"))
+    }
 });
 app.get("/logout",(req,res,next)=>{
     req.logout((err)=>{
         if(err){
             next(err)
         }else{
-            res.redirect("/Note");
+            res.redirect("/login");
         }
     })
    
@@ -286,5 +305,5 @@ app.use((err, req, res, next) => {
     const status = err.status || 500;
     // res.status(status).send(`Status: ${status}      Message: ${err.message}  Name:${err.name} `);
     req.flash("Fail",`An Error Occured here : ${err.message}`);
-    res.redirect("/Note");
+    res.redirect("/login");
 });
