@@ -1,4 +1,44 @@
 <% layout('Layout/boilerplate.ejs') -%>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/Notes-sidebar.css">
+    <title>Notes</title>
+</head>
 <body>
-    <h1>Notes</h1>
+    <div class="main-notes">
+        <h1> <span class="head">M</span>
+            <span class="head">Y</span>
+            <span class="head"> &nbsp; &nbsp;</span>
+            <span class="head">N</span>
+            <span class="head">O</span>
+            <span class="head">T</span>
+            <span class="head">E</span>
+            <span class="head">S</span>
+        </h1>
+        <div class="Note-corner">
+                <% if (N.length > 0) { %>
+                    <% for (let i = 0; i < N.length; i++) { %>
+                        <div class="card">
+                        <ul>
+                            <li><span class="Bold">Date:</span> <%= N[i].date.toLocaleDateString() %></li>
+                            <li><span class="Bold">Subject:</span> <%= N[i].Subject %></li>
+                            <li><span class="Bold">Content:</span> <%- N[i].content %></li>
+                            <br>
+                        </ul>
+                        <form method="post" action="/<%= N[i]._id %>/Note?_method=DELETE">
+                            <button class="icon"><i class="ri-delete-bin-line"></i></button>
+                            </form>
+                    </div>
+                    <% } %>
+                <% } else { %>
+                    <p>No Note found.</p>
+                    <img src="src/Profile_a.svg" class="notfound-image">
+                <% } %>
+                
+                </div>
+    </div>
 </body>
+</html>
