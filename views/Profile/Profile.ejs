@@ -101,10 +101,35 @@
             </div>
             <p class="N">Total Notes : <%= data[0].Notes.length %></p>
             </div>
+            <h1 class="headingss">Game Data</h1>
+            <div class="Game_data">
+                <% let totalGame=0 %>
+                <div class="All_Notes">
+                    <% if (data[0].Game.length > 0) { %>
+                        <% for (let i = 0; i < Math.min(data[0].Game.length,2); i++) { %>
+                            <div class="Game_card">
+                            <ul>
+                                
+                                <br>
+                            </ul>
+                        </div>
+                        <% } %>
+                        <button  class="See_all"><a href="/Note">See all <i class="ri-arrow-right-line"></i> </a></button>
+                    <% } else { %>
+                        <p>No Game found.</p>
+                        <img src="src/Profile_a.svg" class="Image_notfound">
+                    <% } %>
+                    <% if (data[0].Game.length > 0) { %>
+                    <img src="src/Profile_f.svg" class="Image_Notes">
+                    </div>
+                    <% } %>
+                </div>
+                <p class="N">Total Notes : <%= totalGame %></p>
+                </div>
             <div class="delete">
                <form method="post" action="/<%=data[0]._id %>/Profile?_method=DELETE">
                 <button type="submit" class="Delete_button">Delete My Profile</button>
-                <p class="Cautions"><span>*Cautions</span>:Just By Clicking thid Delete Button Your Profile is Deleted Permenantly</p>
+                <p class="Cautions"><span>*Cautions</span>:Just By Clicking this Delete Button Your Profile is Deleted Permenantly</p>
                </form>
                <form method="post" action="/Profile">
                 <button class="P">Edit Information</button>

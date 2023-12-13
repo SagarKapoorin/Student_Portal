@@ -75,6 +75,9 @@ body{
 .Notes_data{
     font-size: 0.85rem;
 }
+.Game_data{
+    font-size: 0.85rem;
+}
 .delete{
     text-align: center;
     margin-bottom: 1rem;
@@ -217,3 +220,14 @@ box-shadow:  -20px 20px 60px #bebebe,
     padding: 1px;
     border-radius: 50%;
 }
+::-webkit-scrollbar {
+    width: 11px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  } 
+  ::-webkit-scrollbar-thumb {
+    background: #6F6AF8;
+    border-radius: 5px;
+  }

@@ -285,6 +285,6 @@ app.get("*",(req,res,next)=>{
 app.use((err, req, res, next) => {
     const status = err.status || 500;
     // res.status(status).send(`Status: ${status}      Message: ${err.message}  Name:${err.name} `);
-    req.flash("Fail",`An Error Occured here :- ${err.message}`);
+    req.flash("Fail",`An Error Occured here : ${err.message}`);
     res.redirect("/Note");
 });
