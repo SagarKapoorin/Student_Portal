@@ -27,6 +27,12 @@ a {
 .main-notes{
     width:100%
 }
+.No_Note{
+  font-size: 2.5rem;
+  font-style: italic;
+  font-weight: 700;
+  text-align: center;
+}
 .hidden{
     display: none;
 }
@@ -54,6 +60,8 @@ a {
   }
   .notfound-image,.Notes-image{
     width: 300px;
+    position: relative;
+    left:30%;
   }
   h1{
     text-align: center;

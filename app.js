@@ -179,7 +179,7 @@ app.get("/Note",(req, res, next) => {
         try{
         User_model.find({_id:req.session.userid}).populate('Quize').populate('Notes').then((data)=>{
             const N=data[0].Notes;
-            console.log(N);
+            // console.log(N);
             res.render("Notes/Notes.ejs" ,{ N });
         });
        
