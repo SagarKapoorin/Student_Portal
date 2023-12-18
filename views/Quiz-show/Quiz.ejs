@@ -23,10 +23,10 @@
                     <% for (let i = 0; i < N.length; i++) { %>
                         <div class="card">
                         <ul>
-                            <li><span class="Bold">Quiz no.</span> <b> <%- i+1 %></b></li>
-                            <li><span class="Bold">Attempted:</span><b> <%= N[i].Total_question %></b></li>
-                            <li><span class="Bold">Content:</span><b> <%- N[i].Correct %></b></li>
-                            <li><span class="Bold">Score:</span><b> <%- N[i].Correct/N[i].Total_question %></b></li>
+                            <li><span class="">Quiz no.</span> <%- i+1 %></li>
+                            <li><span class="">Attempted:</span> <%= N[i].Total_question %></li>
+                            <li><span class="">Content:</span> <%- N[i].Correct %></li>
+                            <li><span class="">Score:</span> <%- N[i].Correct/N[i].Total_question %></li>
                             <br>
                             <form method="post" action="/<%= N[i]._id %>/Quiz?_method=DELETE">
                                 <button class="icon"><i class="ri-delete-bin-line"></i></button>
@@ -40,5 +40,6 @@
                 <% } %>
             </div>
     </div>
+    <img src="src/Quiz_save_b.svg" class="Quiz-save-image">
 </body>
 </html>
