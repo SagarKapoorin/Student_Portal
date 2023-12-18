@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/Notes-sidebar.css">
+    <link rel="stylesheet" href="css/Quiz-show.css">
     <title>Notes</title>
 </head>
 <body>
@@ -12,10 +12,10 @@
         <h1> <span class="head">M</span>
             <span class="head">Y</span>
             <span class="head"> &nbsp; &nbsp;</span>
-            <span class="head">N</span>
-            <span class="head">O</span>
-            <span class="head">T</span>
-            <span class="head">E</span>
+            <span class="head">Q</span>
+            <span class="head">U</span>
+            <span class="head">I</span>
+            <span class="head">Z</span>
             <span class="head">S</span>
         </h1>
         <div class="Note-corner">
@@ -23,18 +23,19 @@
                     <% for (let i = 0; i < N.length; i++) { %>
                         <div class="card">
                         <ul>
-                            <li><span class="Bold">Date:</span> <%= N[i].date.toLocaleDateString() %></li>
-                            <li><span class="Bold">Subject:</span> <%= N[i].Subject %></li>
-                            <li><span class="Bold">Content:</span> <%- N[i].content %></li>
+                            <li><span class="Bold">Quiz no.</span> <b> <%- i+1 %></b></li>
+                            <li><span class="Bold">Attempted:</span><b> <%= N[i].Total_question %></b></li>
+                            <li><span class="Bold">Content:</span><b> <%- N[i].Correct %></b></li>
+                            <li><span class="Bold">Score:</span><b> <%- N[i].Correct/N[i].Total_question %></b></li>
                             <br>
-                            <form method="post" action="/<%= N[i]._id %>/Note?_method=DELETE">
+                            <form method="post" action="/<%= N[i]._id %>/Quiz?_method=DELETE">
                                 <button class="icon"><i class="ri-delete-bin-line"></i></button>
                                 </form>
                         </ul>
                     </div>
                     <% } %>
                 <% } else { %>
-                    <p class="No_Note">No Note found.</p>
+                    <p class="No_Note">No Quiz found.</p>
                     <img src="src/Profile_a.svg" class="notfound-image">
                 <% } %>
             </div>
