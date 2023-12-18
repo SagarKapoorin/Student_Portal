@@ -92,7 +92,7 @@ app.post("/signup",wrapAsync(async(req,res,next)=>{
             req.session.userid=registerUser._id;
             // console.log(req.session.userid)
             req.flash("Success","User Loggedin")
-            res.redirect("/login");
+            res.redirect("/Quiz");
         });
        
     }catch(err){
@@ -174,12 +174,28 @@ app.get("/Profile",async(req, res,next) => {
     }
    
 });
+app.get("/Quizshow",(req, res, next) => {  
+    if(req.isAuthenticated()){
+        try{
+        User_model.find({_id:req.session.userid}).populate('Quize').populate('Notes').then((data)=>{
+            const N=data[0].Quize;
+            // console.log(N);
+            res.render("Quiz-show/Quiz.ejs" ,{ N });
+        });
+       
+       }catch(err){
+        next(err);
+        }
+        }else{
+            next(new expresserror(500,"User Not Login"))
+    }
+});
 app.get("/Note",(req, res, next) => {  
     if(req.isAuthenticated()){
         try{
         User_model.find({_id:req.session.userid}).populate('Quize').populate('Notes').then((data)=>{
             const N=data[0].Notes;
-            console.log(N);
+            // console.log(N);
             res.render("Notes/Notes.ejs" ,{ N });
         });
        
