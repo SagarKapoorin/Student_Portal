@@ -123,8 +123,27 @@ passport.authenticate("local",{
 app.get("/Notes",(req, res,next) => {
     res.render("Components/Notes/Notes.ejs");
 });
-app.post("/Profile",(req,res,next)=>{
-    res.render("Password/Password");
+app.post("/:id",async(req,res,next)=>{
+    let { id }=req.params;
+    const founduser=await User_model.findById(id);
+    // console.log(founduser._id);
+    res.render("Password/Password.ejs", { founduser });
+})
+app.post("/:id/Updated",async(req,res)=>{
+    if(req.isAuthenticated){
+    let { id }=req.params;
+    let { Name,email }=req.body;
+    console.log(Name+" "+email);
+    try{
+    const founddetail=await User_model.findOneAndUpdate({_id:id},{username:Name,email:email});
+    // console.log(founddetail);
+    res.redirect("/Profile")
+    }catch(err){
+        next(err);
+    }
+    }else{
+        next(new expresserror(500,"User not login"));
+    }
 })
 app.delete("/:id/Note",async (req,res,next)=>{
     let { id }=req.params;
