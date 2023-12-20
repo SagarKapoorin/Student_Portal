@@ -124,10 +124,14 @@ app.get("/Notes",(req, res,next) => {
     res.render("Components/Notes/Notes.ejs");
 });
 app.post("/:id",async(req,res,next)=>{
+    if(req.isAuthenticated()){
     let { id }=req.params;
     const founduser=await User_model.findById(id);
     // console.log(founduser._id);
     res.render("Password/Password.ejs", { founduser });
+    }else{
+        next(new expresserror(500,"User not login"));
+    }
 })
 app.post("/:id/Updated",async(req,res)=>{
     if(req.isAuthenticated){
@@ -173,7 +177,7 @@ app.get("/Quiz",(req, res,next) => {
     if(req.isAuthenticated()){
     res.render("Quiz/Quiz.ejs");
     }else{
-        next(new expresserror(500,"User Not Login"))
+        next(new expresserror(500,"User Not Login"));
     }
 });
 app.get("/Profile",async(req, res,next) => {
