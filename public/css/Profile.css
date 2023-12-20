@@ -135,6 +135,19 @@ body{
     color:red;
     font-size: 0.6rem;
 }
+canvas{
+    width: 250px !important;
+    height: 250px !important;
+}
+.charts{
+    display: flex; 
+    align-items: center;
+    height: 300px;
+    width: 1000px;
+    justify-content: space-between;
+    /* background-color: #5e36b4; */
+    padding: 1rem;
+}
 .Cautions span{
     font-weight: 700;
 }
