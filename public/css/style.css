@@ -386,3 +386,34 @@ align-items: center;
 .drag-bar-clock:active {
   cursor: grabbing;
 }
+.Share{
+  cursor: pointer;
+}
+.share_things{
+  position: fixed;
+  left:70px;
+  top:435px;
+  width: 200px;
+  height: 40px;
+  z-index: -8;
+  background: #f0f0f0;
+  border-radius: 8px;
+  border:2px solid #6F6AF8;
+  display: none;
+  transition:  all 0.3s ease-in-out 0s;
+}
+.display_it{
+  display: block;
+}
+.share_things .social_media{
+  margin-top: 4px;
+  display: flex;
+  gap:1rem;
+  justify-content: center;
+  align-items: center;
+}
+.size{
+  cursor: pointer;
+  width:1.7rem;
+  height: 1.7rem;
+}

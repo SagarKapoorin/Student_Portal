@@ -23,6 +23,14 @@
     <%- include("../includes/flash.ejs"); %>
         <%- include("../includes/header.ejs"); %>
         <%- include("../includes/sidebar.ejs"); %>
+        <div class="share_things">
+            <ul class="social_media">
+                <li><button id="shareBtn"><img src="src/Twitter.svg" class="size"></button></li>
+                <li><button id="shareBtn_t"><img src="src/Instagram.svg" class="size"></button></li>
+                <li><button id="shareBtn_f"><img src="src/Facebook.svg" class="size"></button></li>
+                <li><button id="shareBtn_w"><img src="src/Discord.svg" class="size"></button></li>
+            </ul>
+        </div>
     <div class="body" id="main-container">
         <%- body %>
     </div>
@@ -31,5 +39,6 @@
     <script src="js/drag.js"></script>
     <script src="js/Quiz1.js"></script>
     <script src="js/Quiz2.js"></script>
+    <script src="js/Share.js"></script>
 </body>
 </html>
