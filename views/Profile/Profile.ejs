@@ -42,7 +42,7 @@
                     </ul>
                 </div>
                 <% } %>
-                <button class="See_all"><a href="/<%=data[0]._id %>/Quiz">See all <i class="ri-arrow-right-line"></i> </a></button>
+                <button class="See_all"><a href="/Quizshow">See all <i class="ri-arrow-right-line"></i> </a></button>
                 <% if (data[0].Quize.length > 0) { %>
                     <img src="src/Profile_e.svg" class="Image_Notes">
                     <% } %>
@@ -107,8 +107,8 @@
             <div class="Game_data">
                 <% let totalGame=0 %>
                 <div class="All_Notes">
-                    <% if (data[0].Game.length > 0) { %>
-                        <% for (let i = 0; i < Math.min(data[0].Game.length,2); i++) { %>
+                    <% if (data[0].Games.length > 0) { %>
+                        <% for (let i = 0; i < Math.min(data[0].Games.length,2); i++) { %>
                             <div class="Game_card">
                             <ul>
                                 
@@ -121,12 +121,12 @@
                         <p>No Game found.</p>
                         <img src="src/Profile_a.svg" class="Image_notfound">
                     <% } %>
-                    <% if (data[0].Game.length > 0) { %>
+                    <% if (data[0].Games.length > 0) { %>
                     <img src="src/Profile_f.svg" class="Image_Notes">
                     </div>
                     <% } %>
                 </div>
-                <p class="N">Total Notes : <%= totalGame %></p>
+                <p class="N">Total Games : <%= totalGame %></p>
                 </div>
             <div class="delete">
                <form method="post" action="/Profile/<%=data[0]._id %>?_method=DELETE">

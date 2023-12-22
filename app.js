@@ -14,6 +14,7 @@ const Note_validation=require("./Validation/Note_validation.js");
 const Quiz_validation=require("./Validation/Quiz_validation.js");
 const sessions=require("express-session");
 const User_model=require("./models/User.js");
+const Game_model=require("./models/Game.js");
 const flash=require("connect-flash");
 const passport=require("passport");
 const LocalStrategy=require("passport-local");
@@ -76,6 +77,41 @@ app.get("/calculator",(req, res) => {
 });
 app.get("/signup",(req,res)=>{
     res.render("Sign/Sign.ejs");
+});
+app.post("/snake",async(req,res,next)=>{
+    if(req.isAuthenticated()){
+        console.log(req.session.userid);
+            const gameInstance = await Game_model.create(req.body);
+                try{
+                const savedGame = await gameInstance.save();
+                console.log('Game created successfully:', savedGame);
+                // console.log(req.session.userid);
+                const user=await User_model.findById(req.session.userid);
+                user.Games.push(savedGame._id);
+                const s=await user.save();
+                // console.log(s);
+                }catch (err) {
+                    return next(new expresserror(500, "Unable to save Game. Check connection."));
+                }
+        }else{
+            next(new expresserror(500,"User not login"))
+        }
+})
+app.get("/snake",async(req,res,next)=>{
+    if(req.isAuthenticated()){
+    // console.log(req.session.userid);
+    try{
+    await User_model.find({_id:req.session.userid}).populate('Games').then((data)=>{
+        // console.log(data[0].Games[0].score);
+        res.render("Games/Snake.ejs",{ data });
+    });
+}catch(err){
+    next(err);
+}
+}else{
+    console.log("not");
+    next(new expresserror(500,"User Not Login"));
+}
 })
 app.post("/signup",wrapAsync(async(req,res,next)=>{
     try{
@@ -157,9 +193,9 @@ app.get("/Quiz",(req, res,next) => {
 app.get("/Profile",async(req, res,next) => {
     if(req.isAuthenticated()){
         try{
-        User_model.find({_id:req.session.userid}).populate('Quize').populate('Notes').then((data)=>{
-            // console.log(data[0].email);
-            // console.log(data[0].Notes);
+       await User_model.find({_id:req.session.userid}).populate('Quize').populate('Notes').then((data)=>{
+            console.log(data[0]);
+            // console.log(data[0]);
             res.render("Profile/Profile.ejs",{ data });
         });
        
@@ -227,12 +263,12 @@ app.post("/save-quiz",async (req, res, next) => {
         const quizInstance = await Quiz_model.create(quizObject);
             try{
             const savedQuiz = await quizInstance.save();
-            console.log('Quiz created successfully:', savedQuiz);
-            console.log(req.session.userid);
+            // console.log('Quiz created successfully:', savedQuiz);
+            // console.log(req.session.userid);
             const user=await User_model.findById(req.session.userid);
             user.Quize.push(savedQuiz._id);
             const s=await user.save();
-            console.log(s.Quize)
+            // console.log(s.Quize)
             }catch (err) {
                 // console.error('Error saving Quiz:', err);
                 return next(new expresserror(500, "Unable to save Quiz. Check connection."));
@@ -259,7 +295,7 @@ app.post("/save-Notes",async (req, res, next) => {
     const user=await User_model.findById(req.session.userid);
     user.Notes.push(savedNote._id);
     const s=await user.save();
-    console.log(s.Quize)
+    // console.log(s.Quize)
     }catch(err){
          console.error('Error saving Note:', err);
          return next(new expresserror(500, "Unable to save Note. Check connection."));
@@ -342,6 +378,7 @@ app.get("*",(req,res,next)=>{
 //-----------------------------Error Handle Middleware--------------------------------------------
 app.use((err, req, res, next) => {
     const status = err.status || 500;
+    console.log(err);
     // res.status(status).send(`Status: ${status}      Message: ${err.message}  Name:${err.name} `);
     req.flash("Fail",`An Error Occured here : ${err.message}`);
     res.redirect("/login");

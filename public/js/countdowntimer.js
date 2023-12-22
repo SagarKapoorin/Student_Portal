@@ -1,10 +1,10 @@
-var start = document.getElementById("start-btn");
-var finished = document.getElementById("finished-btn");
-var hour = document.getElementById("hour-cdt");
-var minute = document.getElementById("minute-cdt");
-var sec = document.getElementById("sec-cdt");
-var startTimer = null;
-var endTime;
+let start = document.getElementById("start-btn");
+let finished = document.getElementById("finished-btn");
+let hour = document.getElementById("hour-cdt");
+let minute = document.getElementById("minute-cdt");
+let sec = document.getElementById("sec-cdt");
+let startTimer = null;
+let endTime;
 
 function timer() {
     let currentTime = Date.now();
