@@ -28,9 +28,6 @@
                             <li><span class="">Content:</span> <%- N[i].Correct %></li>
                             <li><span class="">Score:</span> <%- N[i].Correct/N[i].Total_question %></li>
                             <br>
-                            <form method="post" action="/<%= N[i]._id %>/Quiz?_method=DELETE">
-                                <button class="icon"><i class="ri-delete-bin-line"></i></button>
-                                </form>
                         </ul>
                     </div>
                     <% } %>
