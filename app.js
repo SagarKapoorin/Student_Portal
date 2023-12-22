@@ -193,7 +193,7 @@ app.get("/Quiz",(req, res,next) => {
 app.get("/Profile",async(req, res,next) => {
     if(req.isAuthenticated()){
         try{
-       await User_model.find({_id:req.session.userid}).populate('Quize').populate('Notes').then((data)=>{
+       await User_model.find({_id:req.session.userid}).populate('Games').populate('Quize').populate('Notes').then((data)=>{
             console.log(data[0]);
             // console.log(data[0]);
             res.render("Profile/Profile.ejs",{ data });

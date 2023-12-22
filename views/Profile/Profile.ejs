@@ -104,19 +104,32 @@
             <p class="N">Total Notes : <%= data[0].Notes.length %></p>
             </div>
             <h1 class="headingss">Game Data</h1>
+            <% let snakescore=0; %>
+            <% let rockscore=0; %>
             <div class="Game_data">
-                <% let totalGame=0 %>
                 <div class="All_Notes">
                     <% if (data[0].Games.length > 0) { %>
                         <% for (let i = 0; i < Math.min(data[0].Games.length,2); i++) { %>
+                                <% if(data[0].Games[i].genre=="snake"){ %>
+                                    <% snakescore=Math.max(data[0].Games[i].score,snakescore) %>
+                                <% }else{ %>
+                                    <% rockscore=Math.max(data[0].Games[i].score,rockscore) %>
+                                <% } %>
+                            <% } %>
                             <div class="Game_card">
                             <ul>
-                                
+                                <li> Genre: Snake Game</li>
+                                <li> Score: <%- rockscore %></li>
+                                <br>
+                            </ul>
+                            </div>
+                            <div class="Game_card">
+                            <ul>
+                                <li> Genre: Rock-Paper-Scissor Game</li>
+                                <li> Score: <%- snakescore %></li>
                                 <br>
                             </ul>
                         </div>
-                        <% } %>
-                        <button  class="See_all"><a href="/Note">See all <i class="ri-arrow-right-line"></i> </a></button>
                     <% } else { %>
                         <p>No Game found.</p>
                         <img src="src/Profile_a.svg" class="Image_notfound">
@@ -126,7 +139,7 @@
                     </div>
                     <% } %>
                 </div>
-                <p class="N">Total Games : <%= totalGame %></p>
+                <p class="N">Total Games : <%= data[0].Games.length %></p>
                 </div>
             <div class="delete">
                <form method="post" action="/Profile/<%=data[0]._id %>?_method=DELETE">
