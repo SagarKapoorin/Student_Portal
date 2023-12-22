@@ -206,6 +206,24 @@ box-shadow:  -20px 20px 60px #bebebe,
     text-align: left;
     font-weight: 600;
 }
+.Game_card{
+    border-radius: 50px;
+    box-shadow:  20px 20px 30px #aa8aef,
+                 -20px -20px 30px #ffffff;
+    color:#f6e3fe;
+    background: linear-gradient(to bottom, #aa8aef, #5e36b4);
+    height:220px;
+    border-radius: 20px;
+    line-height: 3rem;
+    font-size: 1rem !important;
+    width:400px;
+    padding-left: 1rem;
+    text-align: left;
+    font-weight: 600;
+}
+.Game_data{
+    margin-top: 2.5rem;
+}
 .Notes_card{
     border-radius: 50px;
     box-shadow:  20px 20px 20px #ff9aa8,
