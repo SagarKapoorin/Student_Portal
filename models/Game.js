@@ -4,6 +4,7 @@ const Games=new Schema({
     genre:{
         type:String,
         required:true,
+        default:"snake"
     },
     score:{
         type:Number,

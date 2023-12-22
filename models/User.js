@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 const Notes=require("./Notes.js");
-const Review=require("./Review.js");
+const Game=require("./Game.js");
 const Quize=require("./Quize.js");
 const passportLocalMongoose = require('passport-local-mongoose');
 
@@ -22,16 +22,16 @@ const Userschema = new Schema({
         type:mongoose.Schema.Types.ObjectId,
         ref:'Quize',
     }],
-    Game:[{
+    Games:[{
         type:mongoose.Schema.Types.ObjectId,
-        ref:'Game',
+        ref:'Games',
     }]
 });
 Userschema.post("findOneAndDelete",async(user)=>{
     if(user){
         await Notes.deleteMany({_id:{$in: user.Notes}});
         await Quize.deleteOne({_id:{$in: user.Quize}});
-        await Review.deleteMany({_id:{$in: user.Review}})
+        await Game.deleteMany({_id:{$in: user.Game}});
     }
 })
 Userschema.plugin(passportLocalMongoose);
