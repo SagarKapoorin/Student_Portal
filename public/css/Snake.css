@@ -27,6 +27,14 @@
   display: flex;
   justify-content: space-between;
 }
+.Game_a{
+  width:100%;
+  position: absolute;
+  top:0px;
+  z-index: -90;
+  left:0px;
+  opacity: 0.6;
+}
 .play-board {
   height: 100%;
   width: 100%;
