@@ -123,39 +123,13 @@ passport.authenticate("local",{
 app.get("/Notes",(req, res,next) => {
     res.render("Components/Notes/Notes.ejs");
 });
-app.post("/:id",async(req,res,next)=>{
-    if(req.isAuthenticated()){
-    let { id }=req.params;
-    const founduser=await User_model.findById(id);
-    // console.log(founduser._id);
-    res.render("Password/Password.ejs", { founduser });
-    }else{
-        next(new expresserror(500,"User not login"));
-    }
-})
-app.post("/:id/Updated",async(req,res)=>{
-    if(req.isAuthenticated){
-    let { id }=req.params;
-    let { Name,email }=req.body;
-    console.log(Name+" "+email);
-    try{
-    const founddetail=await User_model.findOneAndUpdate({_id:id},{username:Name,email:email});
-    // console.log(founddetail);
-    res.redirect("/Profile")
-    }catch(err){
-        next(err);
-    }
-    }else{
-        next(new expresserror(500,"User not login"));
-    }
-})
 app.delete("/:id/Note",async (req,res,next)=>{
     let { id }=req.params;
     await Note_model.findByIdAndDelete(id);
     req.flash("Success","Note Deleted SuccesFully")
     res.redirect("/Note");
 });
-app.delete("/:id/Profile",async (req,res,next)=>{
+app.delete("/Profile/:id",async (req,res,next)=>{
     let { id }=req.params;
     await User_model.findByIdAndDelete(id);
     req.flash("Success","Profile Deleted SuccesFully")
@@ -302,6 +276,32 @@ app.get("/Contact", wrapAsync(async (req, res, next) => {
         next(new expresserror(500,"User not login"))
     }
 }));
+app.get("/:id",async(req,res,next)=>{
+    if(req.isAuthenticated()){
+    let { id }=req.params;
+    const founduser=await User_model.findById(id);
+    // console.log(founduser._id);
+    res.render("Password/Password.ejs", { founduser });
+    }else{
+        next(new expresserror(500,"User not login"));
+    }
+})
+app.post("/:id/Updated",async(req,res)=>{
+    if(req.isAuthenticated){
+    let { id }=req.params;
+    let { Name,email }=req.body;
+    console.log(Name+" "+email);
+    try{
+    const founddetail=await User_model.findOneAndUpdate({_id:id},{username:Name,email:email});
+    // console.log(founddetail);
+    res.redirect("/Profile")
+    }catch(err){
+        next(err);
+    }
+    }else{
+        next(new expresserror(500,"User not login"));
+    }
+})
 app.post("/Contact", async (req, res, next) => {
     if(req.isAuthenticated()){
         const contactObject = {
