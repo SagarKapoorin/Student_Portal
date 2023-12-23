@@ -1,0 +1,41 @@
+<% layout('Layout/boilerplate.ejs') -%>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Game</title>
+    <link rel="stylesheet" href="css/Game.css">
+</head>
+<body>
+    <div class="Game_Main">
+    <div class="Snake_card" id="Snake_card">
+    <div class="card">
+        <div class="temporary_text" >
+            <img src="src/Snake_game.jpg" class="Img_AA" >
+        </div>
+    <div class="card_content S" >
+        <span class="card_title">Welcome to Snake Game</span>
+            <p class="card_description"><br> <br><b>Game is Over when:- <br><br> <i>1. Collisons with Walls<br>2. if Collides with Himself<br>3. Press any Key to Start the Game</i></b></p>
+        
+    </div>
+</div>
+</div>
+<div class="rock_card" id="rock_card">
+    <div class="card">
+        <div class="temporary_text">
+          <img src="src/rock_game.jpg" class="Img_BB">
+        </div>
+    <div class="card_content R">
+        <span class="card_title">Welcome to Rock-Paper-Scissor Game</span>
+            <p class="card_description"><br><br><b>Rules are Written Here:- <br><br> <i>1. Rock defeat Scissor <br>2. Paper defeats Rock<br>3. Scissor defeats Paper</i></b></p>
+        
+    </div>
+</div>
+</div>
+</div>
+<img src="src/Game_ng.svg" class="Game_img">
+<script src="js/Game.js">
+  </script>
+</body>
+</html>

@@ -3,6 +3,7 @@ const express=require('express');
 const app=express();              
 const methodoverride=require('method-override'); 
 app.use(methodoverride("_method"));
+const validateSign=require("./Validation/signup_validation.js");
 const mongoose=require('mongoose');
 const ejsmate=require("ejs-mate");
 const Quiz_model=require("./models/Quize.js");
@@ -116,7 +117,17 @@ app.get("/snake",async(req,res,next)=>{
 app.post("/signup",wrapAsync(async(req,res,next)=>{
     try{
         let { username, password, email}=req.body;
-        console.log(username+" "+password+" "+email);
+        const sign={
+            username:username,
+            email:email,
+        };
+        console.log(validateSign);
+        const { error, value } = validateSign(sign);
+        if (error) {
+            console.log(error.details[0].message);
+            throw new expresserror(500, "Validation failed");
+        } else {
+            console.log(value);
         const newUser=new User_model({email,username});
         console.log(newUser+"------");
         const registerUser=await User_model.register(newUser,password);
@@ -130,7 +141,7 @@ app.post("/signup",wrapAsync(async(req,res,next)=>{
             req.flash("Success","User Loggedin")
             res.redirect("/Quiz");
         });
-       
+    }
     }catch(err){
        next(err);
     }
@@ -156,8 +167,54 @@ passport.authenticate("local",{
 //    const fakeUser=await User_model.register(User1,"Sagar");
 //    res.send(fakeUser);
 // })
+app.get("/rock",async(req,res,next)=>{
+    if(req.isAuthenticated()){
+        // console.log(req.session.userid);
+        try{
+        await User_model.find({_id:req.session.userid}).populate('Games').then((data)=>{
+            // console.log(data[0].Games[0].score);
+            res.render("Games/Rock-paper-scissor.ejs",{ data });
+        });}catch(err){
+            next(err);
+        }
+        }else{
+            console.log("not");
+            next(new expresserror(500,"User Not Login"));
+        }
+})
+app.post("/rock",async(req,res,next)=>{
+    if(req.isAuthenticated()){
+        console.log(req.session.userid);
+            const gameInstance = await Game_model.create(req.body);
+                try{
+                const savedGame = await gameInstance.save();
+                console.log('Game created successfully:', savedGame);
+                // console.log(req.session.userid);
+                const user=await User_model.findById(req.session.userid);
+                user.Games.push(savedGame._id);
+                const s=await user.save();
+                console.log(s);
+                }catch (err) {
+                    return next(new expresserror(500, "Unable to save Game. Check connection."));
+                }
+        }else{
+            next(new expresserror(500,"User not login"))
+        }
+})
+app.get("/Games",async(req,res,next)=>{
+    if(req.isAuthenticated()){
+        res.render("Games/Game.ejs");
+    }else{
+        next(new expresserror(500,"User Not Login"));
+    }
+    
+})
 app.get("/Notes",(req, res,next) => {
+    if(req.isAuthenticated()){
     res.render("Components/Notes/Notes.ejs");
+    }else{
+        next(new expresserror(500,"User Not Login"));
+    }
 });
 app.delete("/:id/Note",async (req,res,next)=>{
     let { id }=req.params;

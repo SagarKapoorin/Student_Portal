@@ -105,28 +105,34 @@
             </div>
             <h1 class="headingss">Game Data</h1>
             <% let snakescore=0; %>
+            <% let snake_games=0; %>
+            <% let rock_games=0; %>
             <% let rockscore=0; %>
             <div class="Game_data">
                 <div class="All_Notes">
                     <% if (data[0].Games.length > 0) { %>
-                        <% for (let i = 0; i < Math.min(data[0].Games.length,2); i++) { %>
+                        <% for (let i = 0; i < data[0].Games.length; i++) { %>
                                 <% if(data[0].Games[i].genre=="snake"){ %>
                                     <% snakescore=Math.max(data[0].Games[i].score,snakescore) %>
+                                    <% snake_games++ %>
                                 <% }else{ %>
                                     <% rockscore=Math.max(data[0].Games[i].score,rockscore) %>
+                                    <% rock_games++ %>
                                 <% } %>
                             <% } %>
                             <div class="Game_card">
                             <ul>
                                 <li> Genre: Snake Game</li>
-                                <li> Score: <%- rockscore %></li>
+                                <li> Heighest-Score: <%- snakescore %></li>
+                                <li> Games: <%- snake_games %></li>
                                 <br>
                             </ul>
                             </div>
                             <div class="Game_card">
                             <ul>
                                 <li> Genre: Rock-Paper-Scissor Game</li>
-                                <li> Score: <%- snakescore %></li>
+                                <li> Heighest-Score: <%- rockscore %></li>
+                                <li> Games: <%- rock_games %></li>
                                 <br>
                             </ul>
                         </div>

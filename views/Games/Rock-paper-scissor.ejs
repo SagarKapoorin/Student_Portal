@@ -1,0 +1,52 @@
+<% layout('Layout/boilerplate.ejs') -%>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/rock.css">
+</head>
+<body>
+    <section class="container">
+        <% let sc = 0 %>
+        <% for( let i=0;i<data[0].Games.length;i++){ %>
+          <% if(data[0].Games[i].genre=="Rock-Paper-Scissor"){ %>
+           <% sc=data[0].Games[i].score>sc?data[0].Games[i].score:sc %>
+          <% } %>
+         <% } %>
+        <div class="scores">
+            <h4>Score: <span class="Score" id="Score">0</span></h4>
+            <h4>Highscore: <span class="Highcore" id="Highscore"><%= sc %></span></h4>
+        </div>
+        <div class="result_field">
+          <div class="result_images">
+            <span class="user_result">
+              <img src="src/stone.svg" alt="Rock Image" class="Result_Img" />
+            </span>
+            <span class="cpu_result">
+              <img src="src/stone.svg" alt="Rock Image" class="Result_Img"/>
+            </span>
+          </div>
+          <div class="result">Let's Play!!</div>
+        </div>
+      
+        <div class="option_images">
+          <span class="option_image">
+            <img src="src/stone.svg" alt="Rock Image" />
+            <p>Rock</p>
+          </span>
+          <span class="option_image">
+            <img src="src/paper.svg" alt="Paper Image" />
+            <p>Paper</p>
+          </span>
+          <span class="option_image">
+            <img src="src/scissors.svg" alt="Scissors Image" />
+            <p>Scissors</p>
+          </span>
+        </div>
+      </section>
+      <img src="src/Game_a.svg" class="Game_a">
+    <script src="js/rock.js"></script>
+</body>
+</html>
