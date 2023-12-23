@@ -34,7 +34,6 @@ const handleGameOver = () => {
             'Content-Type': 'application/json',
         },
         body: JSON.stringify(gameData),
-        // when sending the data to ensure it is properly formatted as JSON
     })
     clearInterval(stop_game);
     alert("Game Over! Press OK to replay...");

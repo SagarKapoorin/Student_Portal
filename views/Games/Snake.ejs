@@ -14,7 +14,9 @@
           <span class="score">Score: 0</span>
           <% let sc = 0 %>
           <% for( let i=0;i<data[0].Games.length;i++){ %>
+            <% if(data[0].Games[i].genre=="snake"){ %>
              <% sc=data[0].Games[i].score>sc?data[0].Games[i].score:sc %>
+            <% } %>
            <% } %>
           <span class="high-score">High Score: <%= sc  %></span>
         </div>

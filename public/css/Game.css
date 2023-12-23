@@ -1,0 +1,93 @@
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+  }
+  button,
+  input {
+    outline: none;
+    border: none;
+  }
+  .Snake_card,.rock_card{
+    cursor: pointer;
+  }
+  .Game_img{
+    width:1000px;
+    position: fixed;
+    top:51px;
+    left:250px;
+    z-index: -9;
+  }
+  .Game_Main{
+    display: flex;
+    width: 100%;
+    gap:5rem;
+    margin:3rem;
+  }
+  .S{
+    background-color: #a2d150;
+  }
+  .card {
+    position: relative;
+    width: 350px;
+    height: 250px;
+    color: #2e2d31;
+    background: transparent;
+    overflow: hidden;
+    border-radius: 20px;
+  }
+  
+  .temporary_text {
+    font-weight: bold;
+    font-size: 24px;
+    padding: 6px 12px;
+    color: #f8f8f8;
+  }
+  
+  .card_title {
+    font-weight: bold;
+  }
+  .Img_AA{
+    width:500px;
+  }
+  .R{
+  background-color: #fef200;
+  }
+  .card_content {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    padding: 15px;
+    border-top-left-radius: 20px;
+
+    transform: translateY(150px);
+    transition: transform .25s;
+  }
+  
+  
+  .card_title {
+    color: #131313;
+    line-height: 15px;
+  }
+  
+  .card_subtitle {
+    display: block;
+    font-size: 12px;
+    margin-bottom: 10px;
+  }
+  
+  .card_description {
+    font-size: 14px;
+    opacity: 0;
+    transition: opacity .5s;
+  }
+  
+  .card:hover .card_content {
+    transform: translateY(0);
+  }
+  
+  .card:hover .card_description {
+    opacity: 1;
+    transition-delay: .25s;
+  }  
