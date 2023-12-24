@@ -44,7 +44,11 @@ a {
 }
 .Bold{
     font-weight: 700;
-    font-size: 1.1rem;
+}
+@media(max-width:400px){
+  .Note-corner{
+    font-size: 0.8rem;
+  }
 }
 .icon{
     position: relative;

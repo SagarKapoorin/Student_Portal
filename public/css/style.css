@@ -45,7 +45,17 @@ body {
   background-color:#f8f9fb ;
   overflow: hidden;
 }
+::-webkit-scrollbar {
+  width: 11px;
+}
 
+::-webkit-scrollbar-track {
+  background: transparent;
+} 
+::-webkit-scrollbar-thumb {
+  background: #6F6AF8;
+  border-radius: 5px;
+}
 button,
 input {
   outline: none;
@@ -416,4 +426,47 @@ align-items: center;
   cursor: pointer;
   width:1.7rem;
   height: 1.7rem;
+}
+@media(max-width:700px){
+  .sidebar{
+    transform: rotate(-90deg);
+    left: 42%;
+    bottom:-110px;
+  }
+  .sidebar_menu i {
+    display: inline-block;
+    transform: rotate(90deg);
+  }
+  .sidebar_menu::after{
+    transform: rotate(90deg);
+  }
+}
+@media (max-width:525px){
+  .sidebar{
+    height: 360px !important;
+  }
+  .sidebar_li{
+    height:47px;
+  }
+}
+@media (max-width:387px) {
+  .sidebar{
+    height: 305px !important;
+    left:116px;
+    bottom:-110px;
+  }
+  .sidebar_li{
+    height:39px;
+  }
+}
+@media (max-width:397px) {
+  .header_a>p {
+    font-size: 14px;
+  }
+  #plus-button{
+    font-size: 14px;
+  }
+  .header_b>form>button{
+    font-size: 14px;
+  }
 }

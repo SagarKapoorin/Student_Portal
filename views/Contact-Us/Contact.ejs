@@ -1,4 +1,12 @@
 <% layout('Layout/boilerplate.ejs') -%>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/contact.css">
+    <title>Document</title>
+</head>
 <body>
     <div class="main">
         <div class="left">
@@ -13,7 +21,7 @@
              </div>
         </div>
         <div class="right">
-        <h1>Get In <span class="Touch">Touch</span> :-</h1>
+        <h1 class="Headding">Get In <span class="Touch">Touch</span> :-</h1>
         <form method="post" action="/Contact" class="Form">
             <input type="text" name="Name" id="Username" placeholder="Name" required>
             <input type="email" name="Email" id="email" placeholder="Email" required>
@@ -37,3 +45,4 @@
         </div>
     </div>
 </body>
+</html>

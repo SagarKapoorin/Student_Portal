@@ -3,6 +3,7 @@
     justify-content: center;
     padding: 1rem;
     width: 98%;
+    margin-bottom: 75px;
     /* border: 2px solid black; */
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 
     0 6px 20px 0 rgba(0, 0, 0, 0.19);
@@ -10,9 +11,64 @@
 ::selection{
     background-color: red;
 }
+@media (max-width: 768px) {
+    .main {
+        flex-direction: column;
+        align-items: center;
+    }
+    .right{
+        width:58% !important;
+    }
+    .left {
+        width: 100% !important;
+        margin-top: 10px !important;
+        margin-bottom: 20px !important;
+        padding-left: 23% !important;
+    }
+    body{
+        overflow-y: visible !important;
+    }
+    .Socail-icon {
+        margin-top: 10px !important;
+    }
+}
+@media (max-width: 525px){
+    .left,.right{
+        margin-right: 66px !important;
+    }
+    *{
+        font-size: 0.9rem;
+    }
+    .Touch{
+        font-size: 1.5rem;
+    }
+}
+@media(max-width:405px){
+    .Headding{
+        font-size: 1.2rem;
+    }
+    .Socail-icon {
+        margin-left: -26px !important;
+    }
+    .right{
+        margin-right: 90px !important;
+    }
+}
+@media(max-width:387px){
+    *{
+        font-size: 0.8rem;
+    }
+    .social{
+        width:36px !important;
+        height: 36px !important;
+    }
+    .Socail-icon i {
+        font-size: 27px !important;
+    }
+}
 .Socail-icon{
     display: flex;
-    justify-content: space-between;
+   gap:2.4rem;
     width: 340px;
     margin-top: 25px;
 }
@@ -139,7 +195,7 @@ input{
     height:3.3ch;
     border-radius: 13px;
     padding-left: 7px;
-    font-size: 0.3rem;
+    font-size: 1rem;
 }
 #Find-us{
     background-color:#f1f1f1;
