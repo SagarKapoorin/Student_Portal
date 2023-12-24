@@ -431,7 +431,7 @@ align-items: center;
   .sidebar{
     transform: rotate(-90deg);
     left: 42%;
-    bottom:-29%;
+    bottom:-110px;
   }
   .sidebar_menu i {
     display: inline-block;
@@ -445,10 +445,28 @@ align-items: center;
   .sidebar{
     height: 360px !important;
   }
+  .sidebar_li{
+    height:47px;
+  }
 }
 @media (max-width:387px) {
   .sidebar{
-    height: 315px !important;
-    bottom:-23%;
+    height: 305px !important;
+    left:116px;
+    bottom:-110px;
+  }
+  .sidebar_li{
+    height:39px;
+  }
+}
+@media (max-width:397px) {
+  .header_a>p {
+    font-size: 14px;
+  }
+  #plus-button{
+    font-size: 14px;
+  }
+  .header_b>form>button{
+    font-size: 14px;
   }
 }
