@@ -45,7 +45,17 @@ body {
   background-color:#f8f9fb ;
   overflow: hidden;
 }
+::-webkit-scrollbar {
+  width: 11px;
+}
 
+::-webkit-scrollbar-track {
+  background: transparent;
+} 
+::-webkit-scrollbar-thumb {
+  background: #6F6AF8;
+  border-radius: 5px;
+}
 button,
 input {
   outline: none;
@@ -416,4 +426,29 @@ align-items: center;
   cursor: pointer;
   width:1.7rem;
   height: 1.7rem;
+}
+@media(max-width:700px){
+  .sidebar{
+    transform: rotate(-90deg);
+    left: 42%;
+    bottom:-29%;
+  }
+  .sidebar_menu i {
+    display: inline-block;
+    transform: rotate(90deg);
+  }
+  .sidebar_menu::after{
+    transform: rotate(90deg);
+  }
+}
+@media (max-width:525px){
+  .sidebar{
+    height: 360px !important;
+  }
+}
+@media (max-width:387px) {
+  .sidebar{
+    height: 315px !important;
+    bottom:-23%;
+  }
 }
