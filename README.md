@@ -55,7 +55,7 @@ Welcome to the EduCrafter repository! This project is a comprehensive web applic
 - JavaScript ![JavaScript](https://img.icons8.com/color/48/000000/javascript.png)
 - Node.js ![Node.js](https://img.icons8.com/color/48/000000/nodejs.png)
 - MongoDB ![MongoDB](https://img.icons8.com/color/48/000000/mongodb.png)
-- Express ![Express.js](https://img.icons8.com/ios-filled/50/000000/express.png)
+- Express ![Express.js]([https://img.icons8.com/ios-filled/50/000000/express.png](https://icons8.com/icon/kg46nzoJrmTR/express-js))
 
 Various npm packages and JavaScript libraries.
 
