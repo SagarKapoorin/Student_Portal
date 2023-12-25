@@ -8,8 +8,8 @@
 
 body{
     background: #FF4081;
+    overflow-y: scroll;
 }
-/* on selection look good */
 ::selection{
     color: #fff;
     background: #FF4081;
@@ -419,4 +419,48 @@ footer button.show{
 .buttons button.quit:hover{
     color: #fff;
     background: #FF4081;
+}
+@media (max-width: 768px) {
+    .image_first {
+        flex-direction: column;
+    }
+
+    .quiz_a,.quiz_image,
+    .quiz_images {
+        position: static;
+        width: 100%;
+        height: auto;
+        margin-bottom: 20px;
+    }
+    .quiz_images_A{
+        display: none;
+    }
+}
+@media (max-width:511px) {
+    .info_box,.quiz_box.activeQuiz,.result_box.activeResult{
+        width:23.7rem !important;
+    }
+    .time_line{
+        max-width: 425px;
+    }
+}
+@media (max-width:451px) {
+    .info_box,.quiz_box.activeQuiz{
+        width:17.7rem !important;
+    }
+    .result_box.activeResult{
+        width:19rem !important;
+    }
+    .complete_text{
+        font-size: 17px !important;
+    }
+    .result_box .score_text span{
+        font-size: 15px !important;
+    }
+    .result_box .buttons button{
+        height: 63px;
+    }
+    .time_line{
+        max-width: 318px;
+    }
 }

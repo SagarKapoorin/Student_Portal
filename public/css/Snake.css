@@ -6,7 +6,11 @@
   box-sizing: border-box;
   font-family: 'Open Sans', sans-serif;
 }
+body{
+overflow-y: scroll;
+}
 .wrapper {
+
     position: relative;
     left:27%;
   width: 75vmin;
@@ -61,4 +65,14 @@
   width: calc(100% / 4);
   cursor: pointer;
   border-right: 1px solid #171B26;
+}
+@media (max-width:900px) {
+  .body{
+    float: left;
+  }
+}
+@media (max-width:649px) {
+  .wrapper{
+    left:15%;
+  }
 }

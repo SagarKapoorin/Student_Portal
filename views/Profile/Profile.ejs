@@ -77,7 +77,7 @@
         <h1 class="Notes_heading headingss">Notes Data</h1>
         <div class="Notes_data">
             <% let totalNote=0 %>
-            <div class="All_Notes">
+            <div class="All_Quizes">
                 <% if (data[0].Notes.length > 0) { %>
                     <% for (let i = 0; i < Math.min(data[0].Notes.length, 2); i++) { %>
                         <div class="Notes_card">
@@ -109,7 +109,7 @@
             <% let rock_games=0; %>
             <% let rockscore=0; %>
             <div class="Game_data">
-                <div class="All_Notes">
+                <div class="All_Quizes">
                     <% if (data[0].Games.length > 0) { %>
                         <% for (let i = 0; i < data[0].Games.length; i++) { %>
                                 <% if(data[0].Games[i].genre=="snake"){ %>

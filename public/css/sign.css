@@ -4,6 +4,9 @@
     margin: 0;
     overflow: hidden;
 }
+body{
+  overflow-y: scroll;
+}
 button,
 input {
   outline: none;
@@ -29,7 +32,7 @@ ul {
     background-color:  rgb(235, 70, 70);
    }
 .Update_img{
-  width:23rem;
+ min-width:19rem;
   height: 21rem;
   /* position: absolute;
   top:-19px;
@@ -39,7 +42,7 @@ ul {
 
 }
 .bookworm {
-    position: fixed;
+    position: absolute;
     top:-5px;
     left: 43%;
     z-index: -3;
@@ -137,8 +140,9 @@ ul {
         background-color: rgba(255, 255, 255, 0.04);
         border-radius: 12px;
         border: 1px solid rgba(209, 213, 219, 0.3);
-        width: 900px;
+        max-width: 900px;
         position: absolute;
+        flex-wrap: wrap;
         left:10%;
         top:10px;
         border:1px solid lightgrey;
@@ -151,22 +155,63 @@ ul {
         padding-left: 15px;
     }
     .signup-image{
-        width:20%;
+      max-width:36vmin;
         position:absolute;
         left:-20px;
         z-index: -4;
     }
     .sign_b{
-        width:20%;
+        max-width:36vmin;
         position:absolute;
         left:85%;
         top:25%;
         z-index: -4;
     }
     .sign_a{
-        width:20%;
+      max-width:36vmin;
         position: absolute;
         left:-20px;
         top:300px;
         z-index: -4;
+    }
+    ::-webkit-scrollbar {
+      width: 11px;
+    }
+  
+    ::-webkit-scrollbar-track {
+      background: transparent;
+    } 
+    ::-webkit-scrollbar-thumb {
+      background: #6F6AF8;
+      border-radius: 5px;
+    }
+    @media (max-width:601px) {
+        .center{
+          left: 0;
+        }
+    }
+    @media (max-width:525px) {
+      .Update_img{
+        min-width: 10rem;
+        height: 10rem;
+      }
+      .form{
+        line-height: 33px;
+        font-size: 1rem;
+      }
+    }
+    @media (max-width:480px) {
+.icon{
+  left:12px;
+  bottom:-41px;
+}
+Label{
+  margin-bottom: -2rem;
+  margin-left: -1rem;
+}
+    }
+    @media (max-width:389px) {
+      .center{
+        left:-2.1rem;
+      }
     }
