@@ -2,7 +2,8 @@
     font-family: 'Open Sans', sans-serif;
 }
 body,html{
-  overflow: hidden;
+  overflow-y: visible;
+  overflow-x: hidden;
 }
 .input_field {
     width: auto;
@@ -51,9 +52,10 @@ align-items: center;
     margin:2.5rem 1rem 2.5rem 1rem;
     width: 95%;
     display: flex;
+    /* flex-wrap: wrap; */
 }
 .main_a,.main_b{
-    width: 50%;
+    min-width: 40%;
     justify-self:flex-start;
 }
 .intro{
@@ -62,6 +64,7 @@ align-items: center;
 }
 .main_b{
   display: flex;
+  width:60%;
 }
 .image_a{
   position: relative;
@@ -146,10 +149,21 @@ header{
   font-weight: 700;
 }
 .bookworm {
-  position: fixed;
+  position: absolute;
   top:-5px;
-  left: 43%;
+  left: 46%;
   z-index: -3;
+}
+::-webkit-scrollbar {
+  width: 11px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+} 
+::-webkit-scrollbar-thumb {
+  background: #f2af50;;
+  border-radius: 5px;
 }
 .Bookworm{
   width: 130px;
@@ -188,4 +202,26 @@ label{
 }
 .activeBox{
   border-left: 5px solid #ff9500;
+  }
+  @media(max-width:984px){
+    .main_b{
+      flex-wrap: wrap;
+    }
+    .image_a{
+      max-width:400px;
+    }
+  }
+  @media (max-width:539px) {
+    .main{
+      flex-wrap: wrap;
+    }
+    .main_b{
+      flex-wrap: nowrap;
+    }
+   
+  }
+  @media (max-width:447px) {
+    .image_a{
+      display: none;
+    }
   }

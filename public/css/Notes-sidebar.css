@@ -107,7 +107,7 @@ a {
     text-stroke:2px black;
   }
   .Note-image-svg{
-    width: 100%;
+    min-width: fit-content;
     position: absolute;
     top:-26px;
     left:-90px;
