@@ -29,8 +29,8 @@ function getLocation() {
 const showposition=async(position)=> {
     const lat = position.coords.latitude;
     const lon = position.coords.longitude;
-    const key="d2073bf344b53355ec0cd8fda473ab2c";
-        let response=await fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${key}&units=metric`);
+    // console.log(window.key);
+        let response=await fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${window.key}&units=metric`);
         let result=await response.json();
         weather.innerHTML=result.weather[0].main;
         humidity.innerHTML=`<i class="ri-water-percent-line"></i> Humidity : ${result.main.humidity}`;
