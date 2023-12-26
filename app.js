@@ -1,4 +1,8 @@
-// ---------------------------Requiring Files,data,etc-----------------------------------
+// ---------------------------Requiring Files,data,etc-----------------------------------\
+if(process.env.NODE_ENV!="production"){
+require('dotenv').config();
+}
+const MongoStore = require('connect-mongo');
 const express=require('express');   
 const app=express();              
 const methodoverride=require('method-override'); 
@@ -20,6 +24,7 @@ const flash=require("connect-flash");
 const passport=require("passport");
 const LocalStrategy=require("passport-local");
 app.engine('ejs', ejsmate);
+const dburl=process.env.ATLAS_DB_URL;
 // ------------------------Starting Server-------------------------------------
 main()
     .then(()=>{
@@ -29,7 +34,8 @@ main()
         console.log("Failure  Reason: ",err);
     });
 async function main(){
-    await mongoose.connect('mongodb://127.0.0.1:27017/student_portal');
+    // console.log(dburl);
+    await mongoose.connect(dburl);
 } 
 // ----------------------Some Basic Funtion Code-----------------------------------------
 app.use(express.urlencoded({ extended:true })); 
@@ -41,8 +47,19 @@ app.listen("8080",(req,res)=>{
 app.use(express.json());
 app.set("views",path.join(__dirname,"/views"));
 app.use(express.static(path.join(__dirname,"public"))); 
+const store=MongoStore.create({
+    mongoUrl:dburl,
+    crypto:{
+        secret:process.env.SECRET
+    },
+    touchAfter:24*3600,             //if not change in session data not need to update session to limit time
+})
+store.on("error",()=>{
+    console.log("error in mongostore",err);
+})
 const session_options={
-    secret:"SomeRandomSecreatKey",
+    store,
+    secret:process.env.SECRET,
     resave:false,
     saveUninitialized:true,
     cookie:{
@@ -233,7 +250,9 @@ app.get("/dict",(req, res) => {
 });
 
 app.get("/weather",(req, res) => {
-    res.render("Components/Weather/weather.ejs");
+    let key=process.env.WEATHER_API_KEY;
+    // console.log(key);
+    res.render("Components/Weather/weather.ejs",{ key });
 });
 
 app.get("/Clock",(req, res) => {
@@ -435,7 +454,7 @@ app.get("*",(req,res,next)=>{
 //-----------------------------Error Handle Middleware--------------------------------------------
 app.use((err, req, res, next) => {
     const status = err.status || 500;
-    console.log(err);
+    // console.log(err);
     // res.status(status).send(`Status: ${status}      Message: ${err.message}  Name:${err.name} `);
     req.flash("Fail",`An Error Occured here : ${err.message}`);
     res.redirect("/login");
