@@ -1,4 +1,6 @@
 # EduCrafter
+## How To Use
+Check out this [Video](https://www.linkedin.com/feed/update/urn:li:activity:7163522277702127616/)
 ## Access EduCrafter
 Explore EduCrafter live on the web: [EduCrafter Student Portal](https://educrafter.onrender.com/login)  (Might Be Working Or Might Not)
 
